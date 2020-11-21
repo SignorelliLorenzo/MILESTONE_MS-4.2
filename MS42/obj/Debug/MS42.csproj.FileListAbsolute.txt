@@ -1,0 +1,9 @@
+C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\bin\Debug\MS42.exe.config
+C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\bin\Debug\MS42.exe
+C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\bin\Debug\MS42.pdb
+C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\MS42.csprojAssemblyReference.cache
+C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\MS42.Form1.resources
+C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\MS42.Properties.Resources.resources
+C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\MS42.csproj.GenerateResource.cache
+C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\MS42.exe
+C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\MS42.pdb

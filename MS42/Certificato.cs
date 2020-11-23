@@ -8,6 +8,7 @@ namespace MS42
 {
     class Certificato
     {
+        private static List<string> listaid=new List<string>();
         public string Idcertificato { get; }
         private string _Medico;
         public string Medico
@@ -34,7 +35,7 @@ namespace MS42
                 }
                 if(Emissione>DateTime.Now)
                 {
-                    throw new Exception("Data non valida");
+                    throw new Exception("Data di emissione non valida");
                 }
                 _Emissione = value;
             }
@@ -77,7 +78,7 @@ namespace MS42
                 }
                 if (Emissione > DateTime.Now)
                 {
-                    throw new Exception("Data non valida");
+                    throw new Exception("Data di nascita non valida");
                 }
                 _Nascita = value;
             }
@@ -130,6 +131,30 @@ namespace MS42
 
         public Certificato(string codice, string medico, string nome,string cognome,DateTime nascita, string residenza, Gruppo_sportivo Gruppo,Discipline disciplina, string agonismo,int lvl, DateTime emissione = default )
         {
+            if(string.IsNullOrEmpty(codice))
+            {
+                throw new Exception("L'id non può essere nullo");
+            }
+            if(listaid.Contains(codice))
+            {
+                throw new Exception("Id già presente");
+            }
+            if(emissione==default(DateTime))
+            {
+                emissione = DateTime.Now;
+            }
+            this.Idcertificato = codice;
+            this.Medico = medico;
+            this.Nome = nome;
+            this.Cognome = cognome;
+            this.Nascita = nascita;
+            this.Residenza = residenza;
+            this.Gruppo_sportivo = Gruppo;
+            this.Disciplina = disciplina;
+            this.Livello_Agonistico = agonismo;
+            this.Idoneità = lvl;
+            this.Emissione = emissione;
+            listaid.Add(codice);
 
         }
     }

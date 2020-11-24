@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MS42
 {
-    class Certificato
+    class Certificato : IDisposable
     {
-        private static List<string> listaid=new List<string>();
+        private static List<string> listaid = new List<string>();
         public string Idcertificato { get; }
         private string _Medico;
         public string Medico
@@ -29,11 +29,11 @@ namespace MS42
             get { return _Emissione; }
             set
             {
-                if (Emissione==null)
+                if (Emissione == null)
                 {
                     throw new Exception("Non sono accettati campi nulli");
                 }
-                if(Emissione>DateTime.Now)
+                if (Emissione > DateTime.Now)
                 {
                     throw new Exception("Data di emissione non valida");
                 }
@@ -96,8 +96,34 @@ namespace MS42
                 _Residenza = value;
             }
         }
-        public Gruppo_sportivo Gruppo_sportivo { get; set; }
-        public Discipline Disciplina { get; set; }
+        private Gruppo_sportivo _Gruppo_sportivo;
+        public Gruppo_sportivo Gruppo_sportivo
+        {
+            get { return _Gruppo_sportivo; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new Exception("Non sono accettati campi nulli");
+                }
+                _Gruppo_sportivo = value;
+            }
+
+        }
+        private Discipline _Disciplina;
+        public Discipline Disciplina
+        {
+            get { return _Disciplina; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new Exception("Non sono accettati campi nulli");
+                }
+                _Disciplina = value;
+            }
+
+        }
         private string _Livello_Agonistico;
         public string Livello_Agonistico
         {
@@ -108,8 +134,8 @@ namespace MS42
                 {
                     throw new Exception("Non sono accettati campi nulli");
                 }
-                if(value!="Dilettanti" && value != "Junior" && value != "Senior")
-                _Livello_Agonistico = value;
+                if (value != "Dilettanti" && value != "Junior" && value != "Senior")
+                    _Livello_Agonistico = value;
             }
         }
         private int _Idoneità;
@@ -118,28 +144,28 @@ namespace MS42
             get { return _Idoneità; }
             set
             {
-                if (value>=1 && value<=100)
+                if (value >= 1 && value <= 100)
                 {
                     throw new Exception("Range massimo superato");
                 }
                 _Idoneità = value;
             }
         }
-            
-        
 
 
-        public Certificato(string codice, string medico, string nome,string cognome,DateTime nascita, string residenza, Gruppo_sportivo Gruppo,Discipline disciplina, string agonismo,int lvl, DateTime emissione = default )
+
+
+        public Certificato(string codice, string medico, string nome, string cognome, DateTime nascita, string residenza, Gruppo_sportivo Gruppo, Discipline disciplina, string agonismo, int lvl, DateTime emissione = default)
         {
-            if(string.IsNullOrEmpty(codice))
+            if (string.IsNullOrEmpty(codice))
             {
                 throw new Exception("L'id non può essere nullo");
             }
-            if(listaid.Contains(codice))
+            if (listaid.Contains(codice))
             {
                 throw new Exception("Id già presente");
             }
-            if(emissione==default(DateTime))
+            if (emissione == default(DateTime))
             {
                 emissione = DateTime.Now;
             }
@@ -156,6 +182,10 @@ namespace MS42
             this.Emissione = emissione;
             listaid.Add(codice);
 
+        }
+        public void Dispose()
+        {
+            listaid.Remove(this.Idcertificato);
         }
     }
 }

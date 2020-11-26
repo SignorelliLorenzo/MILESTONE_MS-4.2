@@ -7,3 +7,4 @@ C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\M
 C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\MS42.csproj.GenerateResource.cache
 C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\MS42.exe
 C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\MS42.pdb
+C:\Users\LORY\source\repos\SignorelliPaleocapa\MILESTONE_MS-4.2\MS42\obj\Debug\MS42.csproj.CoreCompileInputs.cache

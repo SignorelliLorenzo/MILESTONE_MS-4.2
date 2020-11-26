@@ -30,26 +30,26 @@
         {
             this.TAB = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.btnins = new System.Windows.Forms.Button();
+            this.btndisciplina = new System.Windows.Forms.Button();
+            this.btngrupposportivo = new System.Windows.Forms.Button();
+            this.LVL = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Agonismo = new System.Windows.Forms.ComboBox();
+            this.Disciplina = new System.Windows.Forms.ComboBox();
+            this.GruppoSportivo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.NascitaAtleta = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.CognomeAtleta = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.NomeAtleta = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.ResidenzaAtleta = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,67 +58,106 @@
             this.medico = new System.Windows.Forms.TextBox();
             this.id = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.btnmod = new System.Windows.Forms.Button();
+            this.adddismod = new System.Windows.Forms.Button();
+            this.addmodgr = new System.Windows.Forms.Button();
+            this.modlvl = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.modagonismo = new System.Windows.Forms.ComboBox();
+            this.moddisciplina = new System.Windows.Forms.ComboBox();
+            this.modgruppo = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.modnascita = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.modcognome = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.modnome = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.modnazione = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.modemissione = new System.Windows.Forms.DateTimePicker();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.modmedico = new System.Windows.Forms.TextBox();
+            this.modid = new System.Windows.Forms.TextBox();
+            this.GridVisualizza = new System.Windows.Forms.DataGridView();
+            this.tab_elementi = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.email = new System.Windows.Forms.TextBox();
+            this.cell = new System.Windows.Forms.TextBox();
+            this.nominativo = new System.Windows.Forms.TextBox();
+            this.Sede = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.insgruppo = new System.Windows.Forms.Button();
+            this.GridGruppo = new System.Windows.Forms.DataGridView();
+            this.RSGr = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.eliminadis = new System.Windows.Forms.Button();
+            this.modis = new System.Windows.Forms.Button();
+            this.GridDisciplina = new System.Windows.Forms.DataGridView();
+            this.nomedis = new System.Windows.Forms.TextBox();
+            this.mindil = new System.Windows.Forms.NumericUpDown();
+            this.minjun = new System.Windows.Forms.NumericUpDown();
+            this.minsen = new System.Windows.Forms.NumericUpDown();
+            this.BTNINSERISCI = new System.Windows.Forms.Button();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.TAB.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LVL)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modlvl)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridVisualizza)).BeginInit();
+            this.tab_elementi.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridGruppo)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridDisciplina)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mindil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minjun)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minsen)).BeginInit();
             this.SuspendLayout();
             // 
             // TAB
             // 
             this.TAB.Controls.Add(this.tabPage1);
             this.TAB.Controls.Add(this.tabPage2);
-            this.TAB.Controls.Add(this.tabPage3);
+            this.TAB.Controls.Add(this.tab_elementi);
             this.TAB.Location = new System.Drawing.Point(12, 12);
             this.TAB.Name = "TAB";
             this.TAB.SelectedIndex = 0;
-            this.TAB.Size = new System.Drawing.Size(1163, 562);
+            this.TAB.Size = new System.Drawing.Size(1278, 633);
             this.TAB.TabIndex = 0;
+            this.TAB.SelectedIndexChanged += new System.EventHandler(this.TAB_SelectedIndexChanged);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.numericUpDown1);
+            this.tabPage1.Controls.Add(this.btnins);
+            this.tabPage1.Controls.Add(this.btndisciplina);
+            this.tabPage1.Controls.Add(this.btngrupposportivo);
+            this.tabPage1.Controls.Add(this.LVL);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.comboBox3);
-            this.tabPage1.Controls.Add(this.comboBox2);
-            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.Agonismo);
+            this.tabPage1.Controls.Add(this.Disciplina);
+            this.tabPage1.Controls.Add(this.GruppoSportivo);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -132,51 +171,54 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1155, 536);
+            this.tabPage1.Size = new System.Drawing.Size(1270, 607);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "INSERISCI";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // button3
+            // btnins
             // 
-            this.button3.Location = new System.Drawing.Point(488, 401);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(251, 21);
-            this.button3.TabIndex = 32;
-            this.button3.Text = "INSERISCI";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnins.Location = new System.Drawing.Point(488, 401);
+            this.btnins.Name = "btnins";
+            this.btnins.Size = new System.Drawing.Size(251, 21);
+            this.btnins.TabIndex = 32;
+            this.btnins.Text = "INSERISCI";
+            this.btnins.UseVisualStyleBackColor = true;
+            this.btnins.Click += new System.EventHandler(this.btnins_Click);
             // 
-            // button2
+            // btndisciplina
             // 
-            this.button2.Location = new System.Drawing.Point(745, 320);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(21, 21);
-            this.button2.TabIndex = 31;
-            this.button2.Text = "+";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btndisciplina.Location = new System.Drawing.Point(745, 320);
+            this.btndisciplina.Name = "btndisciplina";
+            this.btndisciplina.Size = new System.Drawing.Size(21, 21);
+            this.btndisciplina.TabIndex = 31;
+            this.btndisciplina.Text = "+";
+            this.btndisciplina.UseVisualStyleBackColor = true;
+            this.btndisciplina.Click += new System.EventHandler(this.btndisciplina_Click);
             // 
-            // button1
+            // btngrupposportivo
             // 
-            this.button1.Location = new System.Drawing.Point(745, 294);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(21, 21);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btngrupposportivo.Location = new System.Drawing.Point(745, 294);
+            this.btngrupposportivo.Name = "btngrupposportivo";
+            this.btngrupposportivo.Size = new System.Drawing.Size(21, 21);
+            this.btngrupposportivo.TabIndex = 30;
+            this.btngrupposportivo.Text = "+";
+            this.btngrupposportivo.UseVisualStyleBackColor = true;
+            this.btngrupposportivo.Click += new System.EventHandler(this.button1_Click);
             // 
-            // numericUpDown1
+            // LVL
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(489, 375);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.LVL.Location = new System.Drawing.Point(489, 375);
+            this.LVL.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(250, 20);
-            this.numericUpDown1.TabIndex = 29;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.LVL.Name = "LVL";
+            this.LVL.Size = new System.Drawing.Size(250, 20);
+            this.LVL.TabIndex = 29;
+            this.LVL.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -200,29 +242,33 @@
             this.label11.TabIndex = 26;
             this.label11.Text = "LIVELLO SPORTIVO";
             // 
-            // comboBox3
+            // Agonismo
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(489, 348);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(250, 21);
-            this.comboBox3.TabIndex = 25;
+            this.Agonismo.FormattingEnabled = true;
+            this.Agonismo.Items.AddRange(new object[] {
+            "Dilettante",
+            "Junior",
+            "Senior"});
+            this.Agonismo.Location = new System.Drawing.Point(489, 348);
+            this.Agonismo.Name = "Agonismo";
+            this.Agonismo.Size = new System.Drawing.Size(250, 21);
+            this.Agonismo.TabIndex = 25;
             // 
-            // comboBox2
+            // Disciplina
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(489, 321);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(250, 21);
-            this.comboBox2.TabIndex = 24;
+            this.Disciplina.FormattingEnabled = true;
+            this.Disciplina.Location = new System.Drawing.Point(489, 321);
+            this.Disciplina.Name = "Disciplina";
+            this.Disciplina.Size = new System.Drawing.Size(250, 21);
+            this.Disciplina.TabIndex = 24;
             // 
-            // comboBox1
+            // GruppoSportivo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(489, 294);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(250, 21);
-            this.comboBox1.TabIndex = 23;
+            this.GruppoSportivo.FormattingEnabled = true;
+            this.GruppoSportivo.Location = new System.Drawing.Point(489, 294);
+            this.GruppoSportivo.Name = "GruppoSportivo";
+            this.GruppoSportivo.Size = new System.Drawing.Size(250, 21);
+            this.GruppoSportivo.TabIndex = 23;
             // 
             // label10
             // 
@@ -245,13 +291,13 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.NascitaAtleta);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.CognomeAtleta);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.NomeAtleta);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox9);
+            this.groupBox1.Controls.Add(this.ResidenzaAtleta);
             this.groupBox1.Location = new System.Drawing.Point(412, 167);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(335, 121);
@@ -269,16 +315,16 @@
             this.label8.TabIndex = 20;
             this.label8.Text = "RESIDENZA";
             // 
-            // dateTimePicker2
+            // NascitaAtleta
             // 
-            this.dateTimePicker2.CalendarForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dateTimePicker2.CustomFormat = "d MMMM yyyy";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(76, 69);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(250, 20);
-            this.dateTimePicker2.TabIndex = 19;
-            this.dateTimePicker2.Value = new System.DateTime(2020, 11, 20, 18, 2, 42, 0);
+            this.NascitaAtleta.CalendarForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.NascitaAtleta.CustomFormat = "d MMMM yyyy";
+            this.NascitaAtleta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.NascitaAtleta.Location = new System.Drawing.Point(76, 69);
+            this.NascitaAtleta.Name = "NascitaAtleta";
+            this.NascitaAtleta.Size = new System.Drawing.Size(250, 20);
+            this.NascitaAtleta.TabIndex = 19;
+            this.NascitaAtleta.Value = new System.DateTime(2020, 11, 20, 18, 2, 42, 0);
             // 
             // label7
             // 
@@ -289,12 +335,12 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "NASCITA";
             // 
-            // textBox5
+            // CognomeAtleta
             // 
-            this.textBox5.Location = new System.Drawing.Point(76, 44);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(250, 20);
-            this.textBox5.TabIndex = 4;
+            this.CognomeAtleta.Location = new System.Drawing.Point(76, 44);
+            this.CognomeAtleta.Name = "CognomeAtleta";
+            this.CognomeAtleta.Size = new System.Drawing.Size(250, 20);
+            this.CognomeAtleta.TabIndex = 4;
             // 
             // label6
             // 
@@ -305,12 +351,12 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "COGNOME";
             // 
-            // textBox4
+            // NomeAtleta
             // 
-            this.textBox4.Location = new System.Drawing.Point(76, 18);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(250, 20);
-            this.textBox4.TabIndex = 3;
+            this.NomeAtleta.Location = new System.Drawing.Point(76, 18);
+            this.NomeAtleta.Name = "NomeAtleta";
+            this.NomeAtleta.Size = new System.Drawing.Size(250, 20);
+            this.NomeAtleta.TabIndex = 3;
             // 
             // label5
             // 
@@ -321,12 +367,12 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "NOME";
             // 
-            // textBox9
+            // ResidenzaAtleta
             // 
-            this.textBox9.Location = new System.Drawing.Point(76, 95);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(250, 20);
-            this.textBox9.TabIndex = 7;
+            this.ResidenzaAtleta.Location = new System.Drawing.Point(76, 95);
+            this.ResidenzaAtleta.Name = "ResidenzaAtleta";
+            this.ResidenzaAtleta.Size = new System.Drawing.Size(250, 20);
+            this.ResidenzaAtleta.TabIndex = 7;
             // 
             // label4
             // 
@@ -392,73 +438,96 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.button5);
-            this.tabPage2.Controls.Add(this.button6);
-            this.tabPage2.Controls.Add(this.numericUpDown2);
+            this.tabPage2.Controls.Add(this.btnmod);
+            this.tabPage2.Controls.Add(this.adddismod);
+            this.tabPage2.Controls.Add(this.addmodgr);
+            this.tabPage2.Controls.Add(this.modlvl);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.comboBox4);
-            this.tabPage2.Controls.Add(this.comboBox5);
-            this.tabPage2.Controls.Add(this.comboBox6);
+            this.tabPage2.Controls.Add(this.modagonismo);
+            this.tabPage2.Controls.Add(this.moddisciplina);
+            this.tabPage2.Controls.Add(this.modgruppo);
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.label21);
             this.tabPage2.Controls.Add(this.label22);
             this.tabPage2.Controls.Add(this.label23);
-            this.tabPage2.Controls.Add(this.dateTimePicker4);
+            this.tabPage2.Controls.Add(this.modemissione);
             this.tabPage2.Controls.Add(this.label24);
-            this.tabPage2.Controls.Add(this.textBox8);
-            this.tabPage2.Controls.Add(this.textBox10);
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.modmedico);
+            this.tabPage2.Controls.Add(this.modid);
+            this.tabPage2.Controls.Add(this.GridVisualizza);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1155, 536);
+            this.tabPage2.Size = new System.Drawing.Size(1270, 607);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ELENCO";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Location = new System.Drawing.Point(7, 7);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(435, 158);
+            this.groupBox5.TabIndex = 53;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "CERCA";
+            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(129, 403);
+            this.button4.Location = new System.Drawing.Point(1028, 564);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(251, 21);
-            this.button4.TabIndex = 51;
-            this.button4.Text = "INSERISCI";
+            this.button4.Size = new System.Drawing.Size(236, 23);
+            this.button4.TabIndex = 52;
+            this.button4.Text = "ELIMINA";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnmod
             // 
-            this.button5.Location = new System.Drawing.Point(386, 322);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(21, 21);
-            this.button5.TabIndex = 50;
-            this.button5.Text = "+";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnmod.Location = new System.Drawing.Point(134, 508);
+            this.btnmod.Name = "btnmod";
+            this.btnmod.Size = new System.Drawing.Size(251, 21);
+            this.btnmod.TabIndex = 51;
+            this.btnmod.Text = "MODIFICA";
+            this.btnmod.UseVisualStyleBackColor = true;
+            this.btnmod.Click += new System.EventHandler(this.btnmod_Click);
             // 
-            // button6
+            // adddismod
             // 
-            this.button6.Location = new System.Drawing.Point(386, 296);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(21, 21);
-            this.button6.TabIndex = 49;
-            this.button6.Text = "+";
-            this.button6.UseVisualStyleBackColor = true;
+            this.adddismod.Location = new System.Drawing.Point(391, 427);
+            this.adddismod.Name = "adddismod";
+            this.adddismod.Size = new System.Drawing.Size(21, 21);
+            this.adddismod.TabIndex = 50;
+            this.adddismod.Text = "+";
+            this.adddismod.UseVisualStyleBackColor = true;
+            this.adddismod.Click += new System.EventHandler(this.adddismod_Click);
             // 
-            // numericUpDown2
+            // addmodgr
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(130, 377);
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.addmodgr.Location = new System.Drawing.Point(391, 401);
+            this.addmodgr.Name = "addmodgr";
+            this.addmodgr.Size = new System.Drawing.Size(21, 21);
+            this.addmodgr.TabIndex = 49;
+            this.addmodgr.Text = "+";
+            this.addmodgr.UseVisualStyleBackColor = true;
+            this.addmodgr.Click += new System.EventHandler(this.addmodgr_Click);
+            // 
+            // modlvl
+            // 
+            this.modlvl.Location = new System.Drawing.Point(135, 482);
+            this.modlvl.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(250, 20);
-            this.numericUpDown2.TabIndex = 48;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.modlvl.Name = "modlvl";
+            this.modlvl.Size = new System.Drawing.Size(250, 20);
+            this.modlvl.TabIndex = 48;
+            this.modlvl.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -467,7 +536,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(50, 379);
+            this.label13.Location = new System.Drawing.Point(55, 484);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 13);
             this.label13.TabIndex = 47;
@@ -476,40 +545,40 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(17, 353);
+            this.label14.Location = new System.Drawing.Point(22, 458);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(108, 13);
             this.label14.TabIndex = 46;
             this.label14.Text = "LIVELLO SPORTIVO";
             // 
-            // comboBox4
+            // modagonismo
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(130, 350);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(250, 21);
-            this.comboBox4.TabIndex = 45;
+            this.modagonismo.FormattingEnabled = true;
+            this.modagonismo.Location = new System.Drawing.Point(135, 455);
+            this.modagonismo.Name = "modagonismo";
+            this.modagonismo.Size = new System.Drawing.Size(250, 21);
+            this.modagonismo.TabIndex = 45;
             // 
-            // comboBox5
+            // moddisciplina
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(130, 323);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(250, 21);
-            this.comboBox5.TabIndex = 44;
+            this.moddisciplina.FormattingEnabled = true;
+            this.moddisciplina.Location = new System.Drawing.Point(135, 428);
+            this.moddisciplina.Name = "moddisciplina";
+            this.moddisciplina.Size = new System.Drawing.Size(250, 21);
+            this.moddisciplina.TabIndex = 44;
             // 
-            // comboBox6
+            // modgruppo
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(130, 296);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(250, 21);
-            this.comboBox6.TabIndex = 43;
+            this.modgruppo.FormattingEnabled = true;
+            this.modgruppo.Location = new System.Drawing.Point(135, 401);
+            this.modgruppo.Name = "modgruppo";
+            this.modgruppo.Size = new System.Drawing.Size(250, 21);
+            this.modgruppo.TabIndex = 43;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(2, 326);
+            this.label15.Location = new System.Drawing.Point(7, 431);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(123, 13);
             this.label15.TabIndex = 42;
@@ -518,7 +587,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(11, 299);
+            this.label16.Location = new System.Drawing.Point(16, 404);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(111, 13);
             this.label16.TabIndex = 41;
@@ -527,14 +596,14 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.dateTimePicker3);
+            this.groupBox2.Controls.Add(this.modnascita);
             this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.modcognome);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.modnome);
             this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Location = new System.Drawing.Point(53, 169);
+            this.groupBox2.Controls.Add(this.modnazione);
+            this.groupBox2.Location = new System.Drawing.Point(58, 274);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(335, 121);
             this.groupBox2.TabIndex = 40;
@@ -550,16 +619,16 @@
             this.label17.TabIndex = 20;
             this.label17.Text = "NAZIONE";
             // 
-            // dateTimePicker3
+            // modnascita
             // 
-            this.dateTimePicker3.CalendarForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dateTimePicker3.CustomFormat = "d MMMM yyyy";
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(76, 69);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(250, 20);
-            this.dateTimePicker3.TabIndex = 19;
-            this.dateTimePicker3.Value = new System.DateTime(2020, 11, 20, 18, 2, 42, 0);
+            this.modnascita.CalendarForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.modnascita.CustomFormat = "d MMMM yyyy";
+            this.modnascita.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.modnascita.Location = new System.Drawing.Point(76, 69);
+            this.modnascita.Name = "modnascita";
+            this.modnascita.Size = new System.Drawing.Size(250, 20);
+            this.modnascita.TabIndex = 19;
+            this.modnascita.Value = new System.DateTime(2020, 11, 20, 18, 2, 42, 0);
             // 
             // label18
             // 
@@ -570,12 +639,12 @@
             this.label18.TabIndex = 18;
             this.label18.Text = "NASCITA";
             // 
-            // textBox2
+            // modcognome
             // 
-            this.textBox2.Location = new System.Drawing.Point(76, 44);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(250, 20);
-            this.textBox2.TabIndex = 4;
+            this.modcognome.Location = new System.Drawing.Point(76, 44);
+            this.modcognome.Name = "modcognome";
+            this.modcognome.Size = new System.Drawing.Size(250, 20);
+            this.modcognome.TabIndex = 4;
             // 
             // label19
             // 
@@ -586,12 +655,12 @@
             this.label19.TabIndex = 17;
             this.label19.Text = "COGNOME";
             // 
-            // textBox6
+            // modnome
             // 
-            this.textBox6.Location = new System.Drawing.Point(76, 18);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(250, 20);
-            this.textBox6.TabIndex = 3;
+            this.modnome.Location = new System.Drawing.Point(76, 18);
+            this.modnome.Name = "modnome";
+            this.modnome.Size = new System.Drawing.Size(250, 20);
+            this.modnome.TabIndex = 3;
             // 
             // label20
             // 
@@ -602,17 +671,17 @@
             this.label20.TabIndex = 16;
             this.label20.Text = "NOME";
             // 
-            // textBox7
+            // modnazione
             // 
-            this.textBox7.Location = new System.Drawing.Point(76, 95);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(250, 20);
-            this.textBox7.TabIndex = 7;
+            this.modnazione.Location = new System.Drawing.Point(77, 95);
+            this.modnazione.Name = "modnazione";
+            this.modnazione.Size = new System.Drawing.Size(250, 20);
+            this.modnazione.TabIndex = 7;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(74, 120);
+            this.label21.Location = new System.Drawing.Point(79, 225);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(49, 13);
             this.label21.TabIndex = 39;
@@ -621,7 +690,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(13, 149);
+            this.label22.Location = new System.Drawing.Point(18, 254);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(112, 13);
             this.label22.TabIndex = 38;
@@ -630,86 +699,401 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(37, 94);
+            this.label23.Location = new System.Drawing.Point(42, 199);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(88, 13);
             this.label23.TabIndex = 37;
             this.label23.Text = "IDCERTIFICATO";
             // 
-            // dateTimePicker4
+            // modemissione
             // 
-            this.dateTimePicker4.CalendarForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dateTimePicker4.CustomFormat = "d MMMM yyyy";
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker4.Location = new System.Drawing.Point(130, 143);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(248, 20);
-            this.dateTimePicker4.TabIndex = 36;
-            this.dateTimePicker4.Value = new System.DateTime(2020, 11, 20, 18, 2, 42, 0);
+            this.modemissione.CalendarForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.modemissione.CustomFormat = "d MMMM yyyy";
+            this.modemissione.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.modemissione.Location = new System.Drawing.Point(135, 248);
+            this.modemissione.Name = "modemissione";
+            this.modemissione.Size = new System.Drawing.Size(248, 20);
+            this.modemissione.TabIndex = 36;
+            this.modemissione.Value = new System.DateTime(2020, 11, 20, 18, 2, 42, 0);
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(181, 60);
+            this.label24.Location = new System.Drawing.Point(193, 168);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(150, 25);
             this.label24.TabIndex = 35;
             this.label24.Text = "CERTIFICATO";
             // 
-            // textBox8
+            // modmedico
             // 
-            this.textBox8.Location = new System.Drawing.Point(129, 117);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(249, 20);
-            this.textBox8.TabIndex = 34;
+            this.modmedico.Location = new System.Drawing.Point(134, 222);
+            this.modmedico.Name = "modmedico";
+            this.modmedico.Size = new System.Drawing.Size(249, 20);
+            this.modmedico.TabIndex = 34;
             // 
-            // textBox10
+            // modid
             // 
-            this.textBox10.Location = new System.Drawing.Point(129, 91);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(249, 20);
-            this.textBox10.TabIndex = 33;
+            this.modid.Location = new System.Drawing.Point(134, 196);
+            this.modid.Name = "modid";
+            this.modid.Size = new System.Drawing.Size(249, 20);
+            this.modid.TabIndex = 33;
             // 
-            // dataGridView1
+            // GridVisualizza
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(430, 27);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(719, 462);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.GridVisualizza.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridVisualizza.Location = new System.Drawing.Point(448, 32);
+            this.GridVisualizza.MultiSelect = false;
+            this.GridVisualizza.Name = "GridVisualizza";
+            this.GridVisualizza.ReadOnly = true;
+            this.GridVisualizza.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullColumnSelect;
+            this.GridVisualizza.Size = new System.Drawing.Size(816, 497);
+            this.GridVisualizza.TabIndex = 0;
+            this.GridVisualizza.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // tabPage3
+            // tab_elementi
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1155, 536);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "AGGIUNTA ELEMENTI";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tab_elementi.Controls.Add(this.groupBox4);
+            this.tab_elementi.Controls.Add(this.groupBox3);
+            this.tab_elementi.Location = new System.Drawing.Point(4, 22);
+            this.tab_elementi.Name = "tab_elementi";
+            this.tab_elementi.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_elementi.Size = new System.Drawing.Size(1270, 607);
+            this.tab_elementi.TabIndex = 2;
+            this.tab_elementi.Text = "DISCIPLINA";
+            this.tab_elementi.UseVisualStyleBackColor = true;
+            this.tab_elementi.Click += new System.EventHandler(this.tab_elementi_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label26);
+            this.groupBox4.Controls.Add(this.email);
+            this.groupBox4.Controls.Add(this.cell);
+            this.groupBox4.Controls.Add(this.nominativo);
+            this.groupBox4.Controls.Add(this.Sede);
+            this.groupBox4.Controls.Add(this.button8);
+            this.groupBox4.Controls.Add(this.button9);
+            this.groupBox4.Controls.Add(this.insgruppo);
+            this.groupBox4.Controls.Add(this.GridGruppo);
+            this.groupBox4.Controls.Add(this.RSGr);
+            this.groupBox4.Controls.Add(this.label25);
+            this.groupBox4.Controls.Add(this.label28);
+            this.groupBox4.Controls.Add(this.label29);
+            this.groupBox4.Controls.Add(this.label30);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(16, 299);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1116, 302);
+            this.groupBox4.TabIndex = 33;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "GRUPPO SPORTIVO";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(633, 153);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(47, 16);
+            this.label26.TabIndex = 46;
+            this.label26.Text = "EMAIL";
+            // 
+            // email
+            // 
+            this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email.Location = new System.Drawing.Point(692, 153);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(327, 20);
+            this.email.TabIndex = 45;
+            // 
+            // cell
+            // 
+            this.cell.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cell.Location = new System.Drawing.Point(692, 127);
+            this.cell.MaxLength = 15;
+            this.cell.Name = "cell";
+            this.cell.Size = new System.Drawing.Size(327, 20);
+            this.cell.TabIndex = 44;
+            // 
+            // nominativo
+            // 
+            this.nominativo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nominativo.Location = new System.Drawing.Point(692, 101);
+            this.nominativo.Name = "nominativo";
+            this.nominativo.Size = new System.Drawing.Size(327, 20);
+            this.nominativo.TabIndex = 43;
+            // 
+            // Sede
+            // 
+            this.Sede.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sede.Location = new System.Drawing.Point(691, 75);
+            this.Sede.Name = "Sede";
+            this.Sede.Size = new System.Drawing.Size(327, 20);
+            this.Sede.TabIndex = 42;
+            // 
+            // button8
+            // 
+            this.button8.Enabled = false;
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(692, 237);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(327, 23);
+            this.button8.TabIndex = 41;
+            this.button8.Text = "ELIMINA";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Enabled = false;
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(691, 208);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(327, 23);
+            this.button9.TabIndex = 40;
+            this.button9.Text = "MODIFICA";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // insgruppo
+            // 
+            this.insgruppo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.insgruppo.Location = new System.Drawing.Point(691, 179);
+            this.insgruppo.Name = "insgruppo";
+            this.insgruppo.Size = new System.Drawing.Size(327, 23);
+            this.insgruppo.TabIndex = 39;
+            this.insgruppo.Text = "INSERISCI";
+            this.insgruppo.UseVisualStyleBackColor = true;
+            this.insgruppo.Click += new System.EventHandler(this.insgruppo_Click_1);
+            // 
+            // GridGruppo
+            // 
+            this.GridGruppo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridGruppo.Location = new System.Drawing.Point(17, 28);
+            this.GridGruppo.MultiSelect = false;
+            this.GridGruppo.Name = "GridGruppo";
+            this.GridGruppo.ReadOnly = true;
+            this.GridGruppo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridGruppo.Size = new System.Drawing.Size(534, 268);
+            this.GridGruppo.TabIndex = 20;
+            // 
+            // RSGr
+            // 
+            this.RSGr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RSGr.Location = new System.Drawing.Point(691, 49);
+            this.RSGr.Name = "RSGr";
+            this.RSGr.Size = new System.Drawing.Size(327, 20);
+            this.RSGr.TabIndex = 35;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(640, 127);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(40, 16);
+            this.label25.TabIndex = 34;
+            this.label25.Text = "CELL";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(640, 79);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(45, 16);
+            this.label28.TabIndex = 33;
+            this.label28.Text = "SEDE";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(593, 101);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(92, 16);
+            this.label29.TabIndex = 32;
+            this.label29.Text = "NOMINATIVO";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(557, 53);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(128, 16);
+            this.label30.TabIndex = 31;
+            this.label30.Text = "RAGIONE SOCIALE";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.eliminadis);
+            this.groupBox3.Controls.Add(this.modis);
+            this.groupBox3.Controls.Add(this.GridDisciplina);
+            this.groupBox3.Controls.Add(this.nomedis);
+            this.groupBox3.Controls.Add(this.mindil);
+            this.groupBox3.Controls.Add(this.minjun);
+            this.groupBox3.Controls.Add(this.minsen);
+            this.groupBox3.Controls.Add(this.BTNINSERISCI);
+            this.groupBox3.Controls.Add(this.label32);
+            this.groupBox3.Controls.Add(this.label27);
+            this.groupBox3.Controls.Add(this.label31);
+            this.groupBox3.Controls.Add(this.label33);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(16, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(716, 287);
+            this.groupBox3.TabIndex = 32;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "DISCIPLINA";
+            // 
+            // eliminadis
+            // 
+            this.eliminadis.Enabled = false;
+            this.eliminadis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eliminadis.Location = new System.Drawing.Point(496, 215);
+            this.eliminadis.Name = "eliminadis";
+            this.eliminadis.Size = new System.Drawing.Size(184, 23);
+            this.eliminadis.TabIndex = 21;
+            this.eliminadis.Text = "ELIMINA";
+            this.eliminadis.UseVisualStyleBackColor = true;
+            // 
+            // modis
+            // 
+            this.modis.Enabled = false;
+            this.modis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modis.Location = new System.Drawing.Point(496, 186);
+            this.modis.Name = "modis";
+            this.modis.Size = new System.Drawing.Size(184, 23);
+            this.modis.TabIndex = 20;
+            this.modis.Text = "MODIFICA";
+            this.modis.UseVisualStyleBackColor = true;
+            // 
+            // GridDisciplina
+            // 
+            this.GridDisciplina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridDisciplina.Location = new System.Drawing.Point(17, 28);
+            this.GridDisciplina.MultiSelect = false;
+            this.GridDisciplina.Name = "GridDisciplina";
+            this.GridDisciplina.ReadOnly = true;
+            this.GridDisciplina.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridDisciplina.Size = new System.Drawing.Size(370, 243);
+            this.GridDisciplina.TabIndex = 0;
+            // 
+            // nomedis
+            // 
+            this.nomedis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nomedis.Location = new System.Drawing.Point(495, 53);
+            this.nomedis.Name = "nomedis";
+            this.nomedis.Size = new System.Drawing.Size(184, 20);
+            this.nomedis.TabIndex = 12;
+            // 
+            // mindil
+            // 
+            this.mindil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mindil.Location = new System.Drawing.Point(495, 79);
+            this.mindil.Name = "mindil";
+            this.mindil.Size = new System.Drawing.Size(184, 20);
+            this.mindil.TabIndex = 16;
+            // 
+            // minjun
+            // 
+            this.minjun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minjun.Location = new System.Drawing.Point(495, 105);
+            this.minjun.Name = "minjun";
+            this.minjun.Size = new System.Drawing.Size(184, 20);
+            this.minjun.TabIndex = 17;
+            // 
+            // minsen
+            // 
+            this.minsen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minsen.Location = new System.Drawing.Point(496, 131);
+            this.minsen.Name = "minsen";
+            this.minsen.Size = new System.Drawing.Size(183, 20);
+            this.minsen.TabIndex = 18;
+            // 
+            // BTNINSERISCI
+            // 
+            this.BTNINSERISCI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNINSERISCI.Location = new System.Drawing.Point(495, 157);
+            this.BTNINSERISCI.Name = "BTNINSERISCI";
+            this.BTNINSERISCI.Size = new System.Drawing.Size(184, 23);
+            this.BTNINSERISCI.TabIndex = 19;
+            this.BTNINSERISCI.Text = "INSERISCI";
+            this.BTNINSERISCI.UseVisualStyleBackColor = true;
+            this.BTNINSERISCI.Click += new System.EventHandler(this.BTNINSERISCIDIS_Click);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(403, 79);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(86, 16);
+            this.label32.TabIndex = 10;
+            this.label32.Text = "DILETTANTI";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(440, 57);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(48, 16);
+            this.label27.TabIndex = 5;
+            this.label27.Text = "NOME";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(430, 105);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(58, 16);
+            this.label31.TabIndex = 9;
+            this.label31.Text = "JUNIOR";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(430, 131);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(59, 16);
+            this.label33.TabIndex = 11;
+            this.label33.Text = "SENIOR";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 586);
+            this.ClientSize = new System.Drawing.Size(1317, 657);
             this.Controls.Add(this.TAB);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.TAB.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LVL)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modlvl)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridVisualizza)).EndInit();
+            this.tab_elementi.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridGruppo)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridDisciplina)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mindil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minjun)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minsen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -720,12 +1104,12 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox CognomeAtleta;
+        private System.Windows.Forms.TextBox NomeAtleta;
         private System.Windows.Forms.TextBox medico;
         private System.Windows.Forms.TextBox id;
         private System.Windows.Forms.DateTimePicker emissione;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox ResidenzaAtleta;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -733,48 +1117,78 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Agonismo;
+        private System.Windows.Forms.ComboBox Disciplina;
+        private System.Windows.Forms.ComboBox GruppoSportivo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.DateTimePicker NascitaAtleta;
+        private System.Windows.Forms.NumericUpDown LVL;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Button btnins;
+        private System.Windows.Forms.Button btndisciplina;
+        private System.Windows.Forms.Button btngrupposportivo;
+        private System.Windows.Forms.DataGridView GridVisualizza;
+        private System.Windows.Forms.TabPage tab_elementi;
+        private System.Windows.Forms.Button btnmod;
+        private System.Windows.Forms.Button adddismod;
+        private System.Windows.Forms.Button addmodgr;
+        private System.Windows.Forms.NumericUpDown modlvl;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox modagonismo;
+        private System.Windows.Forms.ComboBox moddisciplina;
+        private System.Windows.Forms.ComboBox modgruppo;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker modnascita;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox modcognome;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox modnome;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox modnazione;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.DateTimePicker modemissione;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox modmedico;
+        private System.Windows.Forms.TextBox modid;
+        private System.Windows.Forms.NumericUpDown minsen;
+        private System.Windows.Forms.NumericUpDown minjun;
+        private System.Windows.Forms.NumericUpDown mindil;
+        private System.Windows.Forms.TextBox nomedis;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DataGridView GridDisciplina;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button insgruppo;
+        private System.Windows.Forms.DataGridView GridGruppo;
+        private System.Windows.Forms.TextBox RSGr;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button BTNINSERISCI;
+        private System.Windows.Forms.Button eliminadis;
+        private System.Windows.Forms.Button modis;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TextBox nominativo;
+        private System.Windows.Forms.TextBox Sede;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox email;
+        private System.Windows.Forms.TextBox cell;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
 

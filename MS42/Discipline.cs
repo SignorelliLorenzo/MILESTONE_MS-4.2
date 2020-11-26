@@ -29,7 +29,9 @@ namespace MS42
 
         }
         private int _LvlMinDilettanti;
-        public int LvlMinDilettanti { get { return _LvlMinDilettanti; } 
+        public int LvlMinDilettanti 
+        { 
+            get { return _LvlMinDilettanti; } 
             set
             {
                 if(value<0 || value>100)
@@ -53,7 +55,7 @@ namespace MS42
                 {
                     throw new Exception("Inserire un valore valido per la categoria Junior");
                 }
-                if (value > this._LvlMinSenior || value > this._LvlMinDilettanti)
+                if (value > this._LvlMinSenior || value < this._LvlMinDilettanti)
                 {
                     throw new Exception("Valore troppo alto intervallo non valido");
                 }

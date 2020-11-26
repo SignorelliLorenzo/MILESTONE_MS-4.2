@@ -120,7 +120,9 @@ namespace MS42
                 {
                     throw new Exception("Non sono accettati campi nulli");
                 }
+                
                 _Disciplina = value;
+                
             }
 
         }
@@ -147,6 +149,37 @@ namespace MS42
                 if (value >= 1 && value <= 100)
                 {
                     throw new Exception("Range massimo superato");
+                }
+                string k = this._Livello_Agonistico;
+                switch (k)
+                {
+                    case "Dilettanti":
+                        {
+                            if (value<_Disciplina.LvlMinDilettanti)
+                            {
+                                throw new Exception("Livello non sufficente per dilettanti");
+                            }
+                            
+                            break;
+                        }
+                    case "Junior":
+                        {
+                            if (value < _Disciplina.LvlMinJunior)
+                            {
+                                throw new Exception("Livello non sufficente per Junior");
+                            }
+                            
+                            break;
+                        }
+                    case "Senior":
+                        {
+                            if (value < _Disciplina.LvlMinSenior)
+                            {
+                                throw new Exception("Non sono accettati campi Senior");
+                            }
+                            break;
+                        }
+
                 }
                 _Idoneità = value;
             }

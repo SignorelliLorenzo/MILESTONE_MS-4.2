@@ -20,11 +20,17 @@ namespace MS42
                 {
                     throw new Exception("Inserire il nome del gruppo sportivo");
                 }
+                if(_Nome==value)
+                {
+                    return;
+                }
                 if(listnome.Contains(value))
                 {
                     throw new Exception("Gruppo sportivo Già inserito");
                 }
-               _Nome = value;
+                listnome.Remove(_Nome);
+                _Nome = value;       /////// PROBLEMA MODIFICA 
+                listnome.Add(_Nome);
             }
 
         }
@@ -52,8 +58,12 @@ namespace MS42
                 if (string.IsNullOrEmpty(value))
                 {
                     throw new Exception("Inserire la sede del gruppo sportivo");
-                }
 
+                }
+                if(value.Trim().Count(f=> f==' ')==0)
+                {
+                    throw new Exception("Inserire sia nome che cognome");
+                }
                 _Presidete = value;
             }
 

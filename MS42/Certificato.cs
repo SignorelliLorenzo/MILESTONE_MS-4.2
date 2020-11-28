@@ -9,6 +9,7 @@ namespace MS42
     class Certificato : IDisposable
     {
         private static List<string> listaid = new List<string>();
+        
         public string Idcertificato { get; }
         private string _Medico;
         public string Medico
@@ -19,6 +20,10 @@ namespace MS42
                 if (String.IsNullOrEmpty(value))
                 {
                     throw new Exception("Non sono accettati campi nulli");
+                }
+                if (value.Trim().Count(f => f == ' ') == 0)
+                {
+                    throw new Exception("Inserire sia nome che cognome");
                 }
                 _Medico = value;
             }
@@ -76,7 +81,7 @@ namespace MS42
                 {
                     throw new Exception("Non sono accettati campi nulli");
                 }
-                if (Emissione > DateTime.Now)
+                if (Emissione >= DateTime.Now)
                 {
                     throw new Exception("Data di nascita non valida");
                 }
@@ -120,9 +125,9 @@ namespace MS42
                 {
                     throw new Exception("Non sono accettati campi nulli");
                 }
-                
+
                 _Disciplina = value;
-                
+
             }
 
         }
@@ -137,7 +142,10 @@ namespace MS42
                     throw new Exception("Non sono accettati campi nulli");
                 }
                 if (value != "Dilettanti" && value != "Junior" && value != "Senior")
-                    _Livello_Agonistico = value;
+                {
+                    throw new Exception("Classe non valida");
+                }
+                _Livello_Agonistico = value;
             }
         }
         private int _Idoneità;
@@ -146,51 +154,99 @@ namespace MS42
             get { return _Idoneità; }
             set
             {
-                if (value >= 1 && value <= 100)
-                {
-                    throw new Exception("Range massimo superato");
-                }
-                string k = this._Livello_Agonistico;
-                switch (k)
-                {
-                    case "Dilettanti":
-                        {
-                            if (value<_Disciplina.LvlMinDilettanti)
-                            {
-                                throw new Exception("Livello non sufficente per dilettanti");
-                            }
-                            
-                            break;
-                        }
-                    case "Junior":
-                        {
-                            if (value < _Disciplina.LvlMinJunior)
-                            {
-                                throw new Exception("Livello non sufficente per Junior");
-                            }
-                            
-                            break;
-                        }
-                    case "Senior":
-                        {
-                            if (value < _Disciplina.LvlMinSenior)
-                            {
-                                throw new Exception("Non sono accettati campi Senior");
-                            }
-                            break;
-                        }
+                //if (!(value >= 1 && value <= 100))
+                //{
+                //    throw new Exception("Range massimo superato");
+                ////}
+                //string k = this._Livello_Agonistico;
+                //switch (k)
+                //{
+                //    case "Dilettanti":
+                //        {
+                //            if (value<_Disciplina.LvlMinDilettanti)
+                //            {
+                //                throw new Exception("Livello non sufficente per dilettanti");
+                //            }
 
-                }
+                //            break;
+                //        }
+                //    case "Junior":
+                //        {
+                //            if (value < _Disciplina.LvlMinJunior)
+                //            {
+                //                throw new Exception("Livello non sufficente per Junior");
+                //            }
+
+                //            break;
+                //        }
+                //    case "Senior":
+                //        {
+                //            if (value < _Disciplina.LvlMinSenior)
+                //            {
+                //                throw new Exception("Non sono accettati campi Senior");
+                //            }
+                //            break;
+                //        }
+
+                //}
                 _Idoneità = value;
             }
+
         }
 
 
+        public void CambiaDisciplina(Discipline disciplina, int lvl, string agonismo)
+        {
+           
 
+            if (!(lvl >= 1 && lvl <= 100))
+            {
+                throw new Exception("Range massimo superato");
+            }
+            if (agonismo != "Dilettante" && agonismo != "Junior" && agonismo != "Senior")
+            {
+                throw new Exception("Classe non valida");
+            }
+            string k = agonismo;
+            switch (k)
+            {
+                case "Dilettante":
+                    {
+                        if (lvl < disciplina.LvlMinDilettanti)
+                        {
+                            throw new Exception("Livello non sufficente per dilettanti");
+                        }
+
+                        break;
+                    }
+                case "Junior":
+                    {
+                        if (lvl < disciplina.LvlMinJunior)
+                        {
+                            throw new Exception("Livello non sufficente per Junior");
+                        }
+
+                        break;
+                    }
+                case "Senior":
+                    {
+                        if (lvl < disciplina.LvlMinSenior)
+                        {
+                            throw new Exception("Livello non sufficente per Senior");
+                        }
+                        break;
+                    }
+
+
+            }
+            this._Disciplina = disciplina;
+            this._Livello_Agonistico = agonismo;
+            this._Idoneità = lvl;
+        }
 
         public Certificato(string codice, string medico, string nome, string cognome, DateTime nascita, string residenza, Gruppo_sportivo Gruppo, Discipline disciplina, string agonismo, int lvl, DateTime emissione = default)
         {
-            if (string.IsNullOrEmpty(codice))
+            if (string.IsNullOrEmpty(codice) || string.IsNullOrEmpty(agonismo) || disciplina == null)
             {
                 throw new Exception("L'id non può essere nullo");
             }
@@ -202,6 +258,46 @@ namespace MS42
             {
                 emissione = DateTime.Now;
             }
+
+            if (!(lvl >= 1 && lvl <= 100))
+            {
+                throw new Exception("Range massimo superato");
+            }
+            if (agonismo != "Dilettante" && agonismo != "Junior" && agonismo != "Senior")
+            {
+                throw new Exception("Classe non valida");
+            }
+            string k = agonismo;
+            switch (k)
+            {
+                case "Dilettante":
+                    {
+                        if (lvl < disciplina.LvlMinDilettanti)
+                        {
+                            throw new Exception("Livello non sufficente per dilettanti");
+                        }
+
+                        break;
+                    }
+                case "Junior":
+                    {
+                        if (lvl < disciplina.LvlMinJunior)
+                        {
+                            throw new Exception("Livello non sufficente per Junior");
+                        }
+
+                        break;
+                    }
+                case "Senior":
+                    {
+                        if (lvl < disciplina.LvlMinSenior)
+                        {
+                            throw new Exception("Non sono accettati campi Senior");
+                        }
+                        break;
+                    }
+
+            }
             this.Idcertificato = codice;
             this.Medico = medico;
             this.Nome = nome;
@@ -209,9 +305,9 @@ namespace MS42
             this.Nascita = nascita;
             this.Residenza = residenza;
             this.Gruppo_sportivo = Gruppo;
-            this.Disciplina = disciplina;
-            this.Livello_Agonistico = agonismo;
-            this.Idoneità = lvl;
+            this._Disciplina = disciplina;
+            this._Livello_Agonistico = agonismo;
+            this._Idoneità = lvl;
             this.Emissione = emissione;
             listaid.Add(codice);
 

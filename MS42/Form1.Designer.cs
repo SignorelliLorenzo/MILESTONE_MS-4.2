@@ -79,7 +79,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.modnome = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.modnazione = new System.Windows.Forms.TextBox();
+            this.modres = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -90,15 +90,15 @@
             this.GridVisualizza = new System.Windows.Forms.DataGridView();
             this.tab_elementi = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cell = new System.Windows.Forms.MaskedTextBox();
+            this.GridGruppo = new System.Windows.Forms.DataGridView();
             this.label26 = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.TextBox();
-            this.cell = new System.Windows.Forms.TextBox();
             this.nominativo = new System.Windows.Forms.TextBox();
             this.Sede = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.insgruppo = new System.Windows.Forms.Button();
-            this.GridGruppo = new System.Windows.Forms.DataGridView();
             this.RSGr = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -479,12 +479,13 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1028, 564);
+            this.button4.Location = new System.Drawing.Point(1028, 546);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(236, 23);
             this.button4.TabIndex = 52;
             this.button4.Text = "ELIMINA";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnmod
             // 
@@ -554,10 +555,15 @@
             // modagonismo
             // 
             this.modagonismo.FormattingEnabled = true;
+            this.modagonismo.Items.AddRange(new object[] {
+            "Dilettante",
+            "Junior",
+            "Senior"});
             this.modagonismo.Location = new System.Drawing.Point(135, 455);
             this.modagonismo.Name = "modagonismo";
             this.modagonismo.Size = new System.Drawing.Size(250, 21);
             this.modagonismo.TabIndex = 45;
+            this.modagonismo.SelectedIndexChanged += new System.EventHandler(this.modagonismo_SelectedIndexChanged);
             // 
             // moddisciplina
             // 
@@ -602,7 +608,7 @@
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.modnome);
             this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.modnazione);
+            this.groupBox2.Controls.Add(this.modres);
             this.groupBox2.Location = new System.Drawing.Point(58, 274);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(335, 121);
@@ -613,11 +619,11 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 98);
+            this.label17.Location = new System.Drawing.Point(3, 98);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(55, 13);
+            this.label17.Size = new System.Drawing.Size(69, 13);
             this.label17.TabIndex = 20;
-            this.label17.Text = "NAZIONE";
+            this.label17.Text = "RESIDENZA";
             // 
             // modnascita
             // 
@@ -629,6 +635,7 @@
             this.modnascita.Size = new System.Drawing.Size(250, 20);
             this.modnascita.TabIndex = 19;
             this.modnascita.Value = new System.DateTime(2020, 11, 20, 18, 2, 42, 0);
+            this.modnascita.ValueChanged += new System.EventHandler(this.modnascita_ValueChanged);
             // 
             // label18
             // 
@@ -671,12 +678,12 @@
             this.label20.TabIndex = 16;
             this.label20.Text = "NOME";
             // 
-            // modnazione
+            // modres
             // 
-            this.modnazione.Location = new System.Drawing.Point(77, 95);
-            this.modnazione.Name = "modnazione";
-            this.modnazione.Size = new System.Drawing.Size(250, 20);
-            this.modnazione.TabIndex = 7;
+            this.modres.Location = new System.Drawing.Point(77, 95);
+            this.modres.Name = "modres";
+            this.modres.Size = new System.Drawing.Size(250, 20);
+            this.modres.TabIndex = 7;
             // 
             // label21
             // 
@@ -735,6 +742,7 @@
             // 
             // modid
             // 
+            this.modid.Enabled = false;
             this.modid.Location = new System.Drawing.Point(134, 196);
             this.modid.Name = "modid";
             this.modid.Size = new System.Drawing.Size(249, 20);
@@ -747,10 +755,10 @@
             this.GridVisualizza.MultiSelect = false;
             this.GridVisualizza.Name = "GridVisualizza";
             this.GridVisualizza.ReadOnly = true;
-            this.GridVisualizza.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullColumnSelect;
+            this.GridVisualizza.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridVisualizza.Size = new System.Drawing.Size(816, 497);
             this.GridVisualizza.TabIndex = 0;
-            this.GridVisualizza.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.GridVisualizza.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridVisualizza_RowHeaderMouseClick);
             // 
             // tab_elementi
             // 
@@ -767,21 +775,21 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.cell);
+            this.groupBox4.Controls.Add(this.GridGruppo);
             this.groupBox4.Controls.Add(this.label26);
             this.groupBox4.Controls.Add(this.email);
-            this.groupBox4.Controls.Add(this.cell);
             this.groupBox4.Controls.Add(this.nominativo);
             this.groupBox4.Controls.Add(this.Sede);
             this.groupBox4.Controls.Add(this.button8);
             this.groupBox4.Controls.Add(this.button9);
             this.groupBox4.Controls.Add(this.insgruppo);
-            this.groupBox4.Controls.Add(this.GridGruppo);
             this.groupBox4.Controls.Add(this.RSGr);
             this.groupBox4.Controls.Add(this.label25);
             this.groupBox4.Controls.Add(this.label28);
             this.groupBox4.Controls.Add(this.label29);
             this.groupBox4.Controls.Add(this.label30);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(16, 299);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1116, 302);
@@ -789,6 +797,29 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "GRUPPO SPORTIVO";
             this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // cell
+            // 
+            this.cell.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cell.Location = new System.Drawing.Point(692, 127);
+            this.cell.Mask = "000 0000000";
+            this.cell.Name = "cell";
+            this.cell.Size = new System.Drawing.Size(327, 20);
+            this.cell.TabIndex = 47;
+            // 
+            // GridGruppo
+            // 
+            this.GridGruppo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridGruppo.Location = new System.Drawing.Point(6, 28);
+            this.GridGruppo.MultiSelect = false;
+            this.GridGruppo.Name = "GridGruppo";
+            this.GridGruppo.ReadOnly = true;
+            this.GridGruppo.RowHeadersVisible = false;
+            this.GridGruppo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
+            this.GridGruppo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridGruppo.Size = new System.Drawing.Size(545, 241);
+            this.GridGruppo.TabIndex = 34;
+            this.GridGruppo.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridGruppo_RowHeaderMouseClick);
             // 
             // label26
             // 
@@ -807,15 +838,6 @@
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(327, 20);
             this.email.TabIndex = 45;
-            // 
-            // cell
-            // 
-            this.cell.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cell.Location = new System.Drawing.Point(692, 127);
-            this.cell.MaxLength = 15;
-            this.cell.Name = "cell";
-            this.cell.Size = new System.Drawing.Size(327, 20);
-            this.cell.TabIndex = 44;
             // 
             // nominativo
             // 
@@ -865,17 +887,6 @@
             this.insgruppo.Text = "INSERISCI";
             this.insgruppo.UseVisualStyleBackColor = true;
             this.insgruppo.Click += new System.EventHandler(this.insgruppo_Click_1);
-            // 
-            // GridGruppo
-            // 
-            this.GridGruppo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridGruppo.Location = new System.Drawing.Point(17, 28);
-            this.GridGruppo.MultiSelect = false;
-            this.GridGruppo.Name = "GridGruppo";
-            this.GridGruppo.ReadOnly = true;
-            this.GridGruppo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridGruppo.Size = new System.Drawing.Size(534, 268);
-            this.GridGruppo.TabIndex = 20;
             // 
             // RSGr
             // 
@@ -939,10 +950,10 @@
             this.groupBox3.Controls.Add(this.label27);
             this.groupBox3.Controls.Add(this.label31);
             this.groupBox3.Controls.Add(this.label33);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(16, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(716, 287);
+            this.groupBox3.Size = new System.Drawing.Size(1116, 287);
             this.groupBox3.TabIndex = 32;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DISCIPLINA";
@@ -951,7 +962,7 @@
             // 
             this.eliminadis.Enabled = false;
             this.eliminadis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eliminadis.Location = new System.Drawing.Point(496, 215);
+            this.eliminadis.Location = new System.Drawing.Point(721, 220);
             this.eliminadis.Name = "eliminadis";
             this.eliminadis.Size = new System.Drawing.Size(184, 23);
             this.eliminadis.TabIndex = 21;
@@ -962,28 +973,33 @@
             // 
             this.modis.Enabled = false;
             this.modis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modis.Location = new System.Drawing.Point(496, 186);
+            this.modis.Location = new System.Drawing.Point(721, 191);
             this.modis.Name = "modis";
             this.modis.Size = new System.Drawing.Size(184, 23);
             this.modis.TabIndex = 20;
             this.modis.Text = "MODIFICA";
             this.modis.UseVisualStyleBackColor = true;
+            this.modis.Click += new System.EventHandler(this.modis_Click);
             // 
             // GridDisciplina
             // 
             this.GridDisciplina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridDisciplina.Location = new System.Drawing.Point(17, 28);
+            this.GridDisciplina.Location = new System.Drawing.Point(6, 30);
             this.GridDisciplina.MultiSelect = false;
             this.GridDisciplina.Name = "GridDisciplina";
             this.GridDisciplina.ReadOnly = true;
+            this.GridDisciplina.RowHeadersVisible = false;
+            this.GridDisciplina.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.GridDisciplina.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridDisciplina.Size = new System.Drawing.Size(370, 243);
+            this.GridDisciplina.Size = new System.Drawing.Size(545, 241);
             this.GridDisciplina.TabIndex = 0;
+            this.GridDisciplina.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridDisciplina_CellContentClick);
+            this.GridDisciplina.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridDisciplina_RowHeaderMouseClick);
             // 
             // nomedis
             // 
             this.nomedis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nomedis.Location = new System.Drawing.Point(495, 53);
+            this.nomedis.Location = new System.Drawing.Point(720, 58);
             this.nomedis.Name = "nomedis";
             this.nomedis.Size = new System.Drawing.Size(184, 20);
             this.nomedis.TabIndex = 12;
@@ -991,7 +1007,7 @@
             // mindil
             // 
             this.mindil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mindil.Location = new System.Drawing.Point(495, 79);
+            this.mindil.Location = new System.Drawing.Point(720, 84);
             this.mindil.Name = "mindil";
             this.mindil.Size = new System.Drawing.Size(184, 20);
             this.mindil.TabIndex = 16;
@@ -999,7 +1015,7 @@
             // minjun
             // 
             this.minjun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minjun.Location = new System.Drawing.Point(495, 105);
+            this.minjun.Location = new System.Drawing.Point(720, 110);
             this.minjun.Name = "minjun";
             this.minjun.Size = new System.Drawing.Size(184, 20);
             this.minjun.TabIndex = 17;
@@ -1007,7 +1023,7 @@
             // minsen
             // 
             this.minsen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minsen.Location = new System.Drawing.Point(496, 131);
+            this.minsen.Location = new System.Drawing.Point(721, 136);
             this.minsen.Name = "minsen";
             this.minsen.Size = new System.Drawing.Size(183, 20);
             this.minsen.TabIndex = 18;
@@ -1015,7 +1031,7 @@
             // BTNINSERISCI
             // 
             this.BTNINSERISCI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNINSERISCI.Location = new System.Drawing.Point(495, 157);
+            this.BTNINSERISCI.Location = new System.Drawing.Point(720, 162);
             this.BTNINSERISCI.Name = "BTNINSERISCI";
             this.BTNINSERISCI.Size = new System.Drawing.Size(184, 23);
             this.BTNINSERISCI.TabIndex = 19;
@@ -1027,7 +1043,7 @@
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(403, 79);
+            this.label32.Location = new System.Drawing.Point(628, 84);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(86, 16);
             this.label32.TabIndex = 10;
@@ -1037,7 +1053,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(440, 57);
+            this.label27.Location = new System.Drawing.Point(665, 62);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(48, 16);
             this.label27.TabIndex = 5;
@@ -1047,7 +1063,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(430, 105);
+            this.label31.Location = new System.Drawing.Point(655, 110);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(58, 16);
             this.label31.TabIndex = 9;
@@ -1057,7 +1073,7 @@
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(430, 131);
+            this.label33.Location = new System.Drawing.Point(655, 136);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(59, 16);
             this.label33.TabIndex = 11;
@@ -1151,7 +1167,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox modnome;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox modnazione;
+        private System.Windows.Forms.TextBox modres;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
@@ -1170,7 +1186,6 @@
         private System.Windows.Forms.DataGridView GridDisciplina;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button insgruppo;
-        private System.Windows.Forms.DataGridView GridGruppo;
         private System.Windows.Forms.TextBox RSGr;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label28;
@@ -1186,9 +1201,10 @@
         private System.Windows.Forms.TextBox Sede;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox email;
-        private System.Windows.Forms.TextBox cell;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.DataGridView GridGruppo;
+        private System.Windows.Forms.MaskedTextBox cell;
     }
 }
 

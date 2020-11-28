@@ -244,6 +244,7 @@
             // 
             // Agonismo
             // 
+            this.Agonismo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Agonismo.FormattingEnabled = true;
             this.Agonismo.Items.AddRange(new object[] {
             "Dilettante",
@@ -256,6 +257,7 @@
             // 
             // Disciplina
             // 
+            this.Disciplina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Disciplina.FormattingEnabled = true;
             this.Disciplina.Location = new System.Drawing.Point(489, 321);
             this.Disciplina.Name = "Disciplina";
@@ -264,6 +266,7 @@
             // 
             // GruppoSportivo
             // 
+            this.GruppoSportivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GruppoSportivo.FormattingEnabled = true;
             this.GruppoSportivo.Location = new System.Drawing.Point(489, 294);
             this.GruppoSportivo.Name = "GruppoSportivo";
@@ -467,6 +470,7 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ELENCO";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // groupBox5
             // 
@@ -489,6 +493,7 @@
             // 
             // btnmod
             // 
+            this.btnmod.Enabled = false;
             this.btnmod.Location = new System.Drawing.Point(134, 508);
             this.btnmod.Name = "btnmod";
             this.btnmod.Size = new System.Drawing.Size(251, 21);
@@ -499,6 +504,7 @@
             // 
             // adddismod
             // 
+            this.adddismod.Enabled = false;
             this.adddismod.Location = new System.Drawing.Point(391, 427);
             this.adddismod.Name = "adddismod";
             this.adddismod.Size = new System.Drawing.Size(21, 21);
@@ -509,6 +515,7 @@
             // 
             // addmodgr
             // 
+            this.addmodgr.Enabled = false;
             this.addmodgr.Location = new System.Drawing.Point(391, 401);
             this.addmodgr.Name = "addmodgr";
             this.addmodgr.Size = new System.Drawing.Size(21, 21);
@@ -519,6 +526,7 @@
             // 
             // modlvl
             // 
+            this.modlvl.Enabled = false;
             this.modlvl.Location = new System.Drawing.Point(135, 482);
             this.modlvl.Minimum = new decimal(new int[] {
             1,
@@ -554,6 +562,8 @@
             // 
             // modagonismo
             // 
+            this.modagonismo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.modagonismo.Enabled = false;
             this.modagonismo.FormattingEnabled = true;
             this.modagonismo.Items.AddRange(new object[] {
             "Dilettante",
@@ -567,6 +577,7 @@
             // 
             // moddisciplina
             // 
+            this.moddisciplina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.moddisciplina.FormattingEnabled = true;
             this.moddisciplina.Location = new System.Drawing.Point(135, 428);
             this.moddisciplina.Name = "moddisciplina";
@@ -575,6 +586,8 @@
             // 
             // modgruppo
             // 
+            this.modgruppo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.modgruppo.Enabled = false;
             this.modgruppo.FormattingEnabled = true;
             this.modgruppo.Location = new System.Drawing.Point(135, 401);
             this.modgruppo.Name = "modgruppo";
@@ -615,6 +628,7 @@
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ATLETA";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // label17
             // 
@@ -629,6 +643,7 @@
             // 
             this.modnascita.CalendarForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.modnascita.CustomFormat = "d MMMM yyyy";
+            this.modnascita.Enabled = false;
             this.modnascita.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.modnascita.Location = new System.Drawing.Point(76, 69);
             this.modnascita.Name = "modnascita";
@@ -648,6 +663,7 @@
             // 
             // modcognome
             // 
+            this.modcognome.Enabled = false;
             this.modcognome.Location = new System.Drawing.Point(76, 44);
             this.modcognome.Name = "modcognome";
             this.modcognome.Size = new System.Drawing.Size(250, 20);
@@ -664,6 +680,7 @@
             // 
             // modnome
             // 
+            this.modnome.Enabled = false;
             this.modnome.Location = new System.Drawing.Point(76, 18);
             this.modnome.Name = "modnome";
             this.modnome.Size = new System.Drawing.Size(250, 20);
@@ -680,6 +697,7 @@
             // 
             // modres
             // 
+            this.modres.Enabled = false;
             this.modres.Location = new System.Drawing.Point(77, 95);
             this.modres.Name = "modres";
             this.modres.Size = new System.Drawing.Size(250, 20);
@@ -716,6 +734,7 @@
             // 
             this.modemissione.CalendarForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.modemissione.CustomFormat = "d MMMM yyyy";
+            this.modemissione.Enabled = false;
             this.modemissione.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.modemissione.Location = new System.Drawing.Point(135, 248);
             this.modemissione.Name = "modemissione";
@@ -735,6 +754,7 @@
             // 
             // modmedico
             // 
+            this.modmedico.Enabled = false;
             this.modmedico.Location = new System.Drawing.Point(134, 222);
             this.modmedico.Name = "modmedico";
             this.modmedico.Size = new System.Drawing.Size(249, 20);

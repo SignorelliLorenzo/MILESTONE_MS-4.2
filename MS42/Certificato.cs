@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MS42
 {
-    class Certificato : IDisposable
+    class Certificato : IDisposable,ICloneable
     {
         private static List<string> listaid = new List<string>();
         
@@ -311,6 +311,12 @@ namespace MS42
             this.Emissione = emissione;
             listaid.Add(codice);
 
+        }
+        public Object Clone()
+        {
+            Object k = new Object();
+            k = this ;
+            return k;
         }
         public void Dispose()
         {

@@ -43,15 +43,15 @@ namespace MS42
             Gruppi.Add(new Gruppo_sportivo("PaleEolice S.p.a.", "Via Romagnolo della montanara", "Albreto d'aragona" ,"1111111111","albero@gmail.com"));
             Gruppi.Add(new Gruppo_sportivo("Robabella S.p.a.", "Via Albero della collina", "Foremia Francesco", "2222222222", "pesche@gmail.com"));
             Gruppi.Add(new Gruppo_sportivo("Pescebello S.p.a.", "Via Persona sconosciuta", "Yiu Del mare", "3333333333", "comodino@gmail.com"));
-            GruppoSportivo.DataSource = Gruppi;
-            modgruppo.DataSource = Gruppi;
+            GruppoSportivo.Items.AddRange(Gruppi.ToArray());
+            modgruppo.Items.AddRange(Gruppi.ToArray());
             modgruppo.SelectedIndex = -1;
             GruppoSportivo.SelectedIndex = -1;
             EleDiscipline.Add(new Discipline( 12, 13, 14, "Pallavolo"));
             EleDiscipline.Add(new Discipline(1, 13, 24, "Calcio"));
             EleDiscipline.Add(new Discipline(6, 76, 100, "Basket"));
-            Disciplina.DataSource = EleDiscipline;
-            moddisciplina.DataSource = EleDiscipline;
+            Disciplina.Items.AddRange(EleDiscipline.ToArray());
+            moddisciplina.Items.AddRange(EleDiscipline.ToArray());
             Disciplina.SelectedIndex = -1;
             moddisciplina.SelectedIndex = -1;
             Certificati.Add(new Certificato("IBMC456BASDJKLL","Rossi Mario","Alberto","Signorelli",DateTime.Parse("12/12/2003"),"Italia Roma",Gruppi[0],EleDiscipline[0],"Dilettante",12, DateTime.Parse("12/9/2020")));
@@ -85,7 +85,8 @@ namespace MS42
                     }
                 case 1:
                     {
-                        GridVisualizza.DataSource= Certificati;
+                        var visualizza = Certificati.OrderBy(s => s.Idcertificato);
+                        GridVisualizza.DataSource= visualizza.ToList();
                         TAB.TabPages.Remove(tab_elementi);
                         break;
                     }
@@ -103,6 +104,7 @@ namespace MS42
             int k = Certificati.IndexOf(Certificati.Where(s => s.Idcertificato == modid.Text).FirstOrDefault());
             try
             {
+                
                 Certificati[k].Medico = modmedico.Text;
                 Certificati[k].Emissione = modemissione.Value;
                 Certificati[k].Nome = modnome.Text;
@@ -111,6 +113,8 @@ namespace MS42
                 Certificati[k].Residenza = modres.Text;
                 Certificati[k].Gruppo_sportivo = modgruppo.SelectedItem as Gruppo_sportivo;
                 Certificati[k].CambiaDisciplina(moddisciplina.SelectedItem as Discipline, (int)modlvl.Value, modagonismo.SelectedItem.ToString());
+                refresh();
+                MessageBox.Show("MODIFICA ESEGUITA CON SUCCESSO");
             }
             catch (Exception ex)
             {
@@ -166,8 +170,10 @@ namespace MS42
             {
                 Discipline bozza = new Discipline((int)mindil.Value, (int)minjun.Value, (int)minsen.Value,nomedis.Text);
                 EleDiscipline.Add(bozza);
-                GridDisciplina.DataSource = EleDiscipline;
+                var visualizza = EleDiscipline.OrderBy(s => s.Nome);
+                GridDisciplina.DataSource = visualizza.ToList();
                 Disciplina.Items.Add(bozza);
+                moddisciplina.Items.Add(bozza);
                 TAB.SelectedIndex = backtab;
             }
             catch (Exception ex)
@@ -188,8 +194,10 @@ namespace MS42
             {
                 Gruppo_sportivo bozza = new Gruppo_sportivo(RSGr.Text , Sede.Text , nominativo.Text , cell.Text , email.Text);
                 Gruppi.Add(bozza);
-                GridGruppo.DataSource = Gruppi;
+                var visualizza = Gruppi.OrderBy(s => s.Nome);
+                GridGruppo.DataSource = visualizza.ToList();
                 GruppoSportivo.Items.Add(bozza);
+                modgruppo.Items.Add(bozza);
                 TAB.SelectedIndex = backtab;
             }
             catch (Exception ex)
@@ -234,7 +242,33 @@ namespace MS42
         {
 
         }
-
+        private void refresh()
+        {
+            modnome.Clear();
+            modmedico.Clear();
+            modnome.Clear();
+            modcognome.Clear();
+            modres.Clear();
+            modnascita.Value = DateTime.Now;
+            modgruppo.SelectedItem = -1;
+            moddisciplina.SelectedItem = -1;
+            modagonismo.SelectedItem = -1;
+            modlvl.Value = 1;
+            btnmod.Enabled = false;
+            modmedico.Enabled = false;
+            modnome.Enabled = false;
+            modcognome.Enabled = false;
+            modres.Enabled = false;
+            modnascita.Enabled = false;
+            modgruppo.Enabled = false;
+            moddisciplina.Enabled = false;
+            modagonismo.Enabled = false;
+            modlvl.Enabled = false;
+            adddismod.Enabled = false;
+            addmodgr.Enabled = false;
+            modemissione.Enabled = false;
+            GridVisualizza.DataSource = Certificati;
+        }
         private void GridVisualizza_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             modid.Text = GridVisualizza.SelectedRows[0].Cells[0].Value.ToString();
@@ -252,7 +286,21 @@ namespace MS42
             modgruppo.SelectedItem = k.Gruppo_sportivo;
             moddisciplina.SelectedItem = k.Disciplina;
             modagonismo.SelectedItem = k.Livello_Agonistico;
+            modemissione.Value = k.Emissione;
             modlvl.Value = k.Idoneità;
+            btnmod.Enabled = true;
+            modmedico.Enabled = true;
+            modnome.Enabled = true;
+            modcognome.Enabled = true;
+            modres.Enabled = true;
+            modnascita.Enabled = true;
+            modgruppo.Enabled = true;
+            moddisciplina.Enabled = true;
+            modagonismo.Enabled = true;
+            modlvl.Enabled = true;
+            adddismod.Enabled = true;
+            addmodgr.Enabled = true;
+            modemissione.Enabled = true;
         }
 
         private void modnascita_ValueChanged(object sender, EventArgs e)
@@ -261,6 +309,16 @@ namespace MS42
         }
 
         private void modagonismo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }

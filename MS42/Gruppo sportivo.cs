@@ -168,7 +168,7 @@ namespace MS42
             {
                 throw new Exception("Email non valida");
             }
-            cell = cell.Trim();
+            cell = cell.Replace(" ",""); ;
             
             if (cell.Length != 10)
             {

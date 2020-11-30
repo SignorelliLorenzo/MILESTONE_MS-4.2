@@ -117,11 +117,19 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.searchsidisciplina = new System.Windows.Forms.ComboBox();
+            this.Searchgruppi = new System.Windows.Forms.ComboBox();
+            this.Migliore = new System.Windows.Forms.CheckBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.resetdis = new System.Windows.Forms.Button();
+            this.resetgruppo = new System.Windows.Forms.Button();
             this.TAB.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LVL)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modlvl)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridVisualizza)).BeginInit();
@@ -435,6 +443,7 @@
             // id
             // 
             this.id.Location = new System.Drawing.Point(488, 89);
+            this.id.MaxLength = 16;
             this.id.Name = "id";
             this.id.Size = new System.Drawing.Size(249, 20);
             this.id.TabIndex = 0;
@@ -474,15 +483,24 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.resetgruppo);
+            this.groupBox5.Controls.Add(this.resetdis);
+            this.groupBox5.Controls.Add(this.label35);
+            this.groupBox5.Controls.Add(this.label34);
+            this.groupBox5.Controls.Add(this.Migliore);
+            this.groupBox5.Controls.Add(this.Searchgruppi);
+            this.groupBox5.Controls.Add(this.searchsidisciplina);
             this.groupBox5.Location = new System.Drawing.Point(7, 7);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(435, 158);
             this.groupBox5.TabIndex = 53;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "CERCA";
+            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
             // button4
             // 
+            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(1028, 546);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(236, 23);
@@ -1099,6 +1117,75 @@
             this.label33.TabIndex = 11;
             this.label33.Text = "SENIOR";
             // 
+            // searchsidisciplina
+            // 
+            this.searchsidisciplina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.searchsidisciplina.FormattingEnabled = true;
+            this.searchsidisciplina.Location = new System.Drawing.Point(128, 25);
+            this.searchsidisciplina.Name = "searchsidisciplina";
+            this.searchsidisciplina.Size = new System.Drawing.Size(212, 21);
+            this.searchsidisciplina.TabIndex = 0;
+            this.searchsidisciplina.SelectedIndexChanged += new System.EventHandler(this.searchsidisciplina_SelectedIndexChanged);
+            // 
+            // Searchgruppi
+            // 
+            this.Searchgruppi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Searchgruppi.FormattingEnabled = true;
+            this.Searchgruppi.Location = new System.Drawing.Point(128, 52);
+            this.Searchgruppi.Name = "Searchgruppi";
+            this.Searchgruppi.Size = new System.Drawing.Size(212, 21);
+            this.Searchgruppi.TabIndex = 1;
+            this.Searchgruppi.SelectedIndexChanged += new System.EventHandler(this.Searchgruppi_SelectedIndexChanged);
+            // 
+            // Migliore
+            // 
+            this.Migliore.AutoSize = true;
+            this.Migliore.Location = new System.Drawing.Point(128, 80);
+            this.Migliore.Name = "Migliore";
+            this.Migliore.Size = new System.Drawing.Size(237, 17);
+            this.Migliore.TabIndex = 2;
+            this.Migliore.Text = "Atleti che possono frequentare livelli superiori";
+            this.Migliore.UseVisualStyleBackColor = true;
+            this.Migliore.CheckedChanged += new System.EventHandler(this.Migliore_CheckedChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(56, 28);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(66, 13);
+            this.label34.TabIndex = 3;
+            this.label34.Text = "DISCIPLINA";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(11, 55);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(111, 13);
+            this.label35.TabIndex = 4;
+            this.label35.Text = "GRUPPO SPORTIVO";
+            // 
+            // resetdis
+            // 
+            this.resetdis.Location = new System.Drawing.Point(347, 26);
+            this.resetdis.Name = "resetdis";
+            this.resetdis.Size = new System.Drawing.Size(75, 21);
+            this.resetdis.TabIndex = 5;
+            this.resetdis.Text = "RESET";
+            this.resetdis.UseVisualStyleBackColor = true;
+            this.resetdis.Click += new System.EventHandler(this.resetdis_Click);
+            // 
+            // resetgruppo
+            // 
+            this.resetgruppo.Location = new System.Drawing.Point(347, 52);
+            this.resetgruppo.Name = "resetgruppo";
+            this.resetgruppo.Size = new System.Drawing.Size(75, 21);
+            this.resetgruppo.TabIndex = 6;
+            this.resetgruppo.Text = "RESET";
+            this.resetgruppo.UseVisualStyleBackColor = true;
+            this.resetgruppo.Click += new System.EventHandler(this.resetgruppo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1116,6 +1203,8 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modlvl)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1225,6 +1314,13 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView GridGruppo;
         private System.Windows.Forms.MaskedTextBox cell;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.CheckBox Migliore;
+        private System.Windows.Forms.ComboBox Searchgruppi;
+        private System.Windows.Forms.ComboBox searchsidisciplina;
+        private System.Windows.Forms.Button resetgruppo;
+        private System.Windows.Forms.Button resetdis;
     }
 }
 

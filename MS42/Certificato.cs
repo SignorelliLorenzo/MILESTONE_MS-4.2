@@ -354,6 +354,10 @@ namespace MS42
             {
                 throw new Exception("Non sono accettati campi nulli");
             }
+            if (codice.Length != 16)
+            {
+                throw new Exception("Il codice deve essere lungo 16 caratteri");
+            }
             if (listaid.Contains(codice))
             {
                 throw new Exception("Id già presente");

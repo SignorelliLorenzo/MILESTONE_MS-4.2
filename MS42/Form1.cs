@@ -46,15 +46,23 @@ namespace MS42
             GruppoSportivo.Items.AddRange(Gruppi.ToArray());
             modgruppo.Items.AddRange(Gruppi.ToArray());
             modgruppo.SelectedIndex = -1;
+            Searchgruppi.Items.AddRange(Gruppi.ToArray());
+            Searchgruppi.SelectedIndex = -1;
             GruppoSportivo.SelectedIndex = -1;
             EleDiscipline.Add(new Discipline( 12, 13, 14, "Pallavolo"));
             EleDiscipline.Add(new Discipline(1, 13, 24, "Calcio"));
             EleDiscipline.Add(new Discipline(6, 76, 100, "Basket"));
             Disciplina.Items.AddRange(EleDiscipline.ToArray());
             moddisciplina.Items.AddRange(EleDiscipline.ToArray());
+            searchsidisciplina.Items.AddRange(EleDiscipline.ToArray());
+            searchsidisciplina.SelectedIndex = -1;
             Disciplina.SelectedIndex = -1;
             moddisciplina.SelectedIndex = -1;
-            Certificati.Add(new Certificato("IBMC456BASDJKLL","Rossi Mario","Alberto","Signorelli",DateTime.Parse("12/12/2003"),"Italia Roma",Gruppi[0],EleDiscipline[0],"Dilettante",12, DateTime.Parse("12/9/2020")));
+            Certificati.Add(new Certificato("IENDHADTOAD12DIA","Rossi Mario","Alberto","Signorelli",DateTime.Parse("12/12/2003"),"Italia Roma",Gruppi[0],EleDiscipline[0],"Dilettante",12, DateTime.Parse("12/9/2020")));
+            Certificati.Add(new Certificato("12NDHADAHDKL2DIA", "Alberto Vitaglione", "Giovanni", "Da ventura", DateTime.Parse("05/12/1999"), "Italia Milano", Gruppi[2], EleDiscipline[1], "Senior", 100, DateTime.Parse("30/9/2020")));
+            Certificati.Add(new Certificato("12NDHADJHFJH1DIB", "Publio Virgilio", "Dante", "Alighieri", DateTime.Parse("05/07/1998"), "Italia Firenze", Gruppi[0], EleDiscipline[1], "Junior", 100, DateTime.Parse("30/9/2012")));
+
+
         }
 
         private void tab_elementi_Click(object sender, EventArgs e)
@@ -85,8 +93,10 @@ namespace MS42
                     }
                 case 1:
                     {
-                        var visualizza = Certificati.OrderBy(s => s.Idcertificato);
-                        GridVisualizza.DataSource= visualizza.ToList();
+                        if (backtab != 1)
+                        {
+                            UpdateGeneralGrid();
+                        }
                         TAB.TabPages.Remove(tab_elementi);
                         break;
                     }
@@ -264,18 +274,31 @@ namespace MS42
                 return;
             }
             RSGr.Text = x.Nome;
+            Sede.Text = x.Sede;
+            nominativo.Text = x.Presidete;
+            cell.Text = x.Telefono;
+            email.Text = x.Email;
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int x=Certificati.RemoveAll(s => s.Idcertificato ==GridVisualizza.SelectedRows[0].Cells[0].Value.ToString());
-            if(x==0)
+            var eliminare= Certificati.Where(s => s.Idcertificato == GridVisualizza.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault();
+            if (eliminare == null)
             {
                 MessageBox.Show("Codice non trovato");
                 return;
             }
+            Certificati.ForEach(item =>
+            {
+                if (item.Idcertificato == eliminare.Idcertificato)
+                {
+                    item.Dispose();
+                }
+            });
+            Certificati.Remove(eliminare);
             MessageBox.Show("Certificato eliminato con successo");
+            refreshgeneral();
         }
 
         private void maskedTextBox3_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -291,10 +314,11 @@ namespace MS42
             modnome.Clear();
             modcognome.Clear();
             modres.Clear();
+            modid.Clear();
             modnascita.Value = DateTime.Now;
-            modgruppo.SelectedItem = -1;
-            moddisciplina.SelectedItem = -1;
-            modagonismo.SelectedItem = -1;
+            modgruppo.SelectedIndex = -1;
+            moddisciplina.SelectedIndex = -1;
+            modagonismo.SelectedIndex = -1;
             modlvl.Value = 1;
             btnmod.Enabled = false;
             modmedico.Enabled = false;
@@ -309,7 +333,8 @@ namespace MS42
             adddismod.Enabled = false;
             addmodgr.Enabled = false;
             modemissione.Enabled = false;
-            GridVisualizza.DataSource = Certificati;
+            button4.Enabled = false;
+            UpdateGeneralGrid();
         }
         private void refreshdisciplina()
         {
@@ -334,6 +359,50 @@ namespace MS42
             nominativo.Clear();
             cell.Clear();
             email.Clear();
+        }
+        private void UpdateGeneralGrid()
+        {
+            var visualizza = Certificati;
+            if (searchsidisciplina.SelectedIndex!=-1)
+            {
+                 visualizza = visualizza.Where(s => s.Disciplina.Nome == searchsidisciplina.Text).ToList();
+            }
+            if(Searchgruppi.SelectedIndex != -1)
+            {
+                visualizza = visualizza.Where(s => s.Gruppo_sportivo.Nome == Searchgruppi.Text).ToList();
+            }
+            if(Migliore.Checked)
+            {
+                visualizza = visualizza.Where(s => {
+                string k = s.Livello_Agonistico;
+                    switch (k)
+                    {
+                        case "Dilettante":
+                            {
+                                if (s.Idoneità > s.Disciplina.LvlMinJunior)
+                                {
+                                    return true;
+                                }
+                                return false;
+                            }
+                        case "Junior":
+                            {
+                                if (s.Idoneità > s.Disciplina.LvlMinSenior)
+                                {
+                                    return true;
+                                }
+
+                                return false;
+                            }
+                        default:
+                            {
+                                return false;
+                            }
+                    }
+                }).ToList();
+            }
+            
+            GridVisualizza.DataSource = visualizza.OrderBy(s => s.Disciplina.Nome).ToList(); 
         }
         //----------------------------------------
         private void GridVisualizza_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -368,6 +437,7 @@ namespace MS42
             adddismod.Enabled = true;
             addmodgr.Enabled = true;
             modemissione.Enabled = true;
+            button4.Enabled = true;
         }
 
         private void modnascita_ValueChanged(object sender, EventArgs e)
@@ -492,6 +562,38 @@ namespace MS42
                 }
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resetdis_Click(object sender, EventArgs e)
+        {
+            searchsidisciplina.SelectedIndex = -1;
+            refreshgeneral();
+        }
+
+        private void resetgruppo_Click(object sender, EventArgs e)
+        {
+            Searchgruppi.SelectedIndex = -1;
+            refreshgeneral();
+        }
+
+        private void searchsidisciplina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            refreshgeneral();
+        }
+
+        private void Searchgruppi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            refreshgeneral();
+        }
+
+        private void Migliore_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshgeneral();
         }
     }
 }

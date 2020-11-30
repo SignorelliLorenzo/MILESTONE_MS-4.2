@@ -106,7 +106,7 @@ namespace MS42
             {
                 Certificati[k].ModifyParameters(modmedico.Text, modnome.Text, modcognome.Text, modnascita.Value, modres.Text, modgruppo.SelectedItem as Gruppo_sportivo, moddisciplina.SelectedItem as Discipline, modagonismo.SelectedItem.ToString(),(int)modlvl.Value,modemissione.Value );
              
-                refresh();
+                refreshgeneral();
                 MessageBox.Show("MODIFICA ESEGUITA CON SUCCESSO");
             }
             catch (Exception ex)
@@ -170,6 +170,7 @@ namespace MS42
                 Disciplina.Items.Add(bozza);
                 moddisciplina.Items.Add(bozza);
                 TAB.SelectedIndex = backtab;
+                refreshdisciplina();
             }
             catch (Exception ex)
             {
@@ -195,6 +196,7 @@ namespace MS42
                 GruppoSportivo.Items.Add(bozza);
                 modgruppo.Items.Add(bozza);
                 TAB.SelectedIndex = backtab;
+                refreshgruppo();
             }
             catch (Exception ex)
             {
@@ -211,8 +213,17 @@ namespace MS42
         {
             modis.Enabled = true;
             eliminadis.Enabled = true;
-            var code = GridDisciplina.Rows[e.RowIndex].Cells[0].Value.ToString();
-
+           
+            var x = EleDiscipline.Where(s => s.Nome == GridDisciplina.Rows[e.RowIndex].Cells[0].Value.ToString()).FirstOrDefault();
+            if(x==null)
+            {
+                MessageBox.Show("ERRORE LA DISCIPLINA NON SEMBRA ESISTERE");
+                return;
+            }    
+            nomedis.Text=x.Nome;
+            mindil.Value = x.LvlMinDilettanti;
+            minjun.Value = x.LvlMinJunior;
+            minsen.Value = x.LvlMinSenior;
         }
 
         private void modis_Click(object sender, EventArgs e)
@@ -220,7 +231,7 @@ namespace MS42
             try
             { 
 
-                int x = EleDiscipline.IndexOf(EleDiscipline.Where(s => s.Nome==GridDisciplina.Rows[0].Cells[0].Value.ToString()).FirstOrDefault());
+                int x = EleDiscipline.IndexOf(EleDiscipline.Where(s => s.Nome==GridDisciplina.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault());
                 if(x==-1)
                 {
                     MessageBox.Show("ERRORE LA DISCIPLINA NON SEMBRA ESISTERE");
@@ -228,6 +239,7 @@ namespace MS42
 
                 }
                 EleDiscipline[x].ModifyParameters(nomedis.Text, (int)mindil.Value, (int)minjun.Value, (int)minsen.Value);
+                refreshdisciplina();
             }
             catch(Exception ex)
             {
@@ -242,6 +254,16 @@ namespace MS42
 
         private void GridGruppo_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            btnmodgruppo.Enabled = true;
+            eliminagruppo.Enabled = true;
+
+            var x = Gruppi.Where(s => s.Nome == GridGruppo.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault();
+            if (x == null)
+            {
+                MessageBox.Show("ERRORE LA DISCIPLINA NON SEMBRA ESISTERE");
+                return;
+            }
+            RSGr.Text = x.Nome;
 
         }
 
@@ -260,7 +282,9 @@ namespace MS42
         {
 
         }
-        private void refresh()
+
+        //refresh
+        private void refreshgeneral()
         {
             modnome.Clear();
             modmedico.Clear();
@@ -287,6 +311,31 @@ namespace MS42
             modemissione.Enabled = false;
             GridVisualizza.DataSource = Certificati;
         }
+        private void refreshdisciplina()
+        {
+            var visualizza = EleDiscipline.OrderBy(s => s.Nome);
+            GridDisciplina.DataSource = visualizza.ToList();
+            eliminadis.Enabled = false;
+            modis.Enabled = false;
+            nomedis.Clear();
+            mindil.Value=0;
+            minjun.Value = 0;
+            minsen.Value = 0;
+
+        }
+        private void refreshgruppo()
+        {
+            var visualizza = Gruppi.OrderBy(s => s.Nome);
+            GridGruppo.DataSource = visualizza.ToList();
+            eliminagruppo.Enabled = false;
+            modgruppo.Enabled = false;
+            RSGr.Clear();
+            Sede.Clear();
+            nominativo.Clear();
+            cell.Clear();
+            email.Clear();
+        }
+        //----------------------------------------
         private void GridVisualizza_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             modid.Text = GridVisualizza.SelectedRows[0].Cells[0].Value.ToString();
@@ -343,13 +392,13 @@ namespace MS42
 
         private void eliminadis_Click(object sender, EventArgs e)
         {
-            var result=MessageBox.Show("ATTENZIONE!", "Cancellando la disciplina verranno eliminati tutti i cerificati con questa disciplina si vuole continuare?", MessageBoxButtons.YesNo);
+            var result=MessageBox.Show("Cancellando la disciplina verranno eliminati tutti i cerificati con questa disciplina si vuole continuare?", "ATTENZIONE!", MessageBoxButtons.YesNo);
             switch(result)
             {
                 case DialogResult.Yes:
                 {
 
-                        var x = EleDiscipline.Where(s => s.Nome == GridDisciplina.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault();
+                        Discipline x = EleDiscipline.Where(s => s.Nome == GridDisciplina.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault();
                         if (x == null)
                         {
                             MessageBox.Show("Disciplina non trovato");
@@ -364,9 +413,14 @@ namespace MS42
                         });
                         int eliminati=Certificati.RemoveAll(s=> s.Disciplina==x);
                         int index=EleDiscipline.IndexOf(x);
+                        Disciplina.Items.Remove(EleDiscipline[index]);
+                        moddisciplina.Items.Remove(EleDiscipline[index]);
                         EleDiscipline[index].Dispose();
                         EleDiscipline.Remove(x);
+                        refreshdisciplina();
+
                         MessageBox.Show("Disciplina eliminata con successo, sono stati eliminati "+eliminati+" certificati che contenevano questa disciplina");
+                        
                         break;
                 }
                 case DialogResult.No:
@@ -379,7 +433,7 @@ namespace MS42
 
         private void eliminabtn_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("ATTENZIONE!", "Cancellando il gruppo sportivo verranno eliminati tutti i cerificati con questo guppo si vuole continuare?", MessageBoxButtons.YesNo);
+            var result = MessageBox.Show("Cancellando la disciplina verranno eliminati tutti i cerificati con questa disciplina si vuole continuare?", "ATTENZIONE!", MessageBoxButtons.YesNo);
             switch (result)
             {
                 case DialogResult.Yes:
@@ -400,6 +454,8 @@ namespace MS42
                         });
                         int eliminati = Certificati.RemoveAll(s => s.Gruppo_sportivo == x);
                         int index = Gruppi.IndexOf(x);
+                        GruppoSportivo.Items.Remove(Gruppi[index]);
+                        modgruppo.Items.Remove(Gruppi[index]);
                         Gruppi[index].Dispose();
                         Gruppi.Remove(x);
                         MessageBox.Show("Gruppo sportivo eliminata con successo, sono stati eliminati " + eliminati + " certificati che contenevano questa disciplina");
@@ -409,6 +465,32 @@ namespace MS42
                     {
                         return;
                     }
+            }
+        }
+
+        private void btnmodgruppo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                int x = Gruppi.IndexOf(Gruppi.Where(s => s.Nome == GridDisciplina.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault());
+                if (x == -1)
+                {
+                    MessageBox.Show("ERRORE IL GRUPPO NON SEMBRA ESISTERE");
+                    return;
+
+                }
+                Gruppi[x].ModifyParameters(RSGr.Text,cell.Text.Replace(" ",""),email.Text,Sede.Text,nominativo.Text);
+                refreshdisciplina();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Source != "MS42")
+                {
+                    MessageBox.Show("ERRORE GENERICO RICONTROLLARE I DATI!");
+                    return;
+                }
+                MessageBox.Show(ex.Message);
             }
         }
     }

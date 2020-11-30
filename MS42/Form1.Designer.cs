@@ -97,7 +97,7 @@
             this.nominativo = new System.Windows.Forms.TextBox();
             this.Sede = new System.Windows.Forms.TextBox();
             this.eliminagruppo = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnmodgruppo = new System.Windows.Forms.Button();
             this.insgruppo = new System.Windows.Forms.Button();
             this.RSGr = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -802,7 +802,7 @@
             this.groupBox4.Controls.Add(this.nominativo);
             this.groupBox4.Controls.Add(this.Sede);
             this.groupBox4.Controls.Add(this.eliminagruppo);
-            this.groupBox4.Controls.Add(this.button9);
+            this.groupBox4.Controls.Add(this.btnmodgruppo);
             this.groupBox4.Controls.Add(this.insgruppo);
             this.groupBox4.Controls.Add(this.RSGr);
             this.groupBox4.Controls.Add(this.label25);
@@ -834,7 +834,6 @@
             this.GridGruppo.MultiSelect = false;
             this.GridGruppo.Name = "GridGruppo";
             this.GridGruppo.ReadOnly = true;
-            this.GridGruppo.RowHeadersVisible = false;
             this.GridGruppo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.GridGruppo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridGruppo.Size = new System.Drawing.Size(545, 241);
@@ -887,16 +886,17 @@
             this.eliminagruppo.UseVisualStyleBackColor = true;
             this.eliminagruppo.Click += new System.EventHandler(this.eliminabtn_Click);
             // 
-            // button9
+            // btnmodgruppo
             // 
-            this.button9.Enabled = false;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(691, 208);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(327, 23);
-            this.button9.TabIndex = 40;
-            this.button9.Text = "MODIFICA";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnmodgruppo.Enabled = false;
+            this.btnmodgruppo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmodgruppo.Location = new System.Drawing.Point(691, 208);
+            this.btnmodgruppo.Name = "btnmodgruppo";
+            this.btnmodgruppo.Size = new System.Drawing.Size(327, 23);
+            this.btnmodgruppo.TabIndex = 40;
+            this.btnmodgruppo.Text = "MODIFICA";
+            this.btnmodgruppo.UseVisualStyleBackColor = true;
+            this.btnmodgruppo.Click += new System.EventHandler(this.btnmodgruppo_Click);
             // 
             // insgruppo
             // 
@@ -1010,7 +1010,6 @@
             this.GridDisciplina.MultiSelect = false;
             this.GridDisciplina.Name = "GridDisciplina";
             this.GridDisciplina.ReadOnly = true;
-            this.GridDisciplina.RowHeadersVisible = false;
             this.GridDisciplina.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.GridDisciplina.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridDisciplina.Size = new System.Drawing.Size(545, 241);
@@ -1217,7 +1216,7 @@
         private System.Windows.Forms.Button eliminadis;
         private System.Windows.Forms.Button modis;
         private System.Windows.Forms.Button eliminagruppo;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnmodgruppo;
         private System.Windows.Forms.TextBox nominativo;
         private System.Windows.Forms.TextBox Sede;
         private System.Windows.Forms.Label label26;

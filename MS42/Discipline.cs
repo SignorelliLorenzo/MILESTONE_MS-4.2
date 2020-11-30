@@ -41,67 +41,100 @@ namespace MS42
         {
             get { return _Nome; }
 
-            //set
-            //{
+            set
+            {
+                if (string.IsNullOrEmpty(Nome))
+                {
+                    throw new Exception("Fornire un nome");
+                }
+                if (_Nome != value)
+                {
+                    if (elenomi.Contains(value))
+                    {
+                        throw new Exception("Disciplina già creata");
 
-            //}
+                    }
+                    elenomi.Remove(_Nome);
+                    elenomi.Add(value);
+                    _Nome = value;
+                }
+            }
 
         }
         private int _LvlMinDilettanti;
         public int LvlMinDilettanti 
         { 
-            get { return _LvlMinDilettanti; } 
-            //set
-            //{
-            //    if(value<0 || value>100)
-            //    {
-            //        throw new Exception("Inserire un valore valido per i dilettanti");
-            //    }
-            //    if(value>this._LvlMinJunior)
-            //    {
-            //        throw new Exception("Valore troppo alto intervallo non valido");
-            //    }
-            //    _LvlMinDilettanti = value;
-            //}
+            get { return _LvlMinDilettanti; }
+            set
+            {
+                if (value < 0 || value > 100)
+                {
+                    throw new Exception("Inserire un valore valido per i dilettanti");
+                }
+                if (value > this._LvlMinJunior)
+                {
+                    throw new Exception("Valore troppo alto intervallo non valido");
+                }
+                _LvlMinDilettanti = value;
+            }
         }
         private int _LvlMinJunior;
         public int LvlMinJunior
         {
             get { return _LvlMinJunior; }
-            //set
-            //{
-            //    if (value < 0 || value > 100)
-            //    {
-            //        throw new Exception("Inserire un valore valido per la categoria Junior");
-            //    }
-            //    if (value > this._LvlMinSenior || value < this._LvlMinDilettanti)
-            //    {
-            //        throw new Exception("Valore troppo alto intervallo non valido");
-            //    }
-            //    _LvlMinJunior = value;
-            //}
+            set
+            {
+                if (value < 0 || value > 100)
+                {
+                    throw new Exception("Inserire un valore valido per la categoria Junior");
+                }
+                if (value > this._LvlMinSenior || value < this._LvlMinDilettanti)
+                {
+                    throw new Exception("Valore troppo alto intervallo non valido");
+                }
+                _LvlMinJunior = value;
+            }
         }
         private int _LvlMinSenior;
         public int LvlMinSenior
         {
             get { return _LvlMinSenior; }
-            //set
-            //{
-            //    if (value < 0 || value > 100)
-            //    {
-            //        throw new Exception("Inserire un valore valido per la categoria Senior");
-            //    }
-            //    if (value < this._LvlMinJunior)
-            //    {
-            //        throw new Exception("Valore troppo alto intervallo non valido");
-            //    }
-            //    _LvlMinSenior = value;
-            //}
+            set
+            {
+                if (value < 0 || value > 100)
+                {
+                    throw new Exception("Inserire un valore valido per la categoria Senior");
+                }
+                if (value < this._LvlMinJunior)
+                {
+                    throw new Exception("Valore troppo alto intervallo non valido");
+                }
+                _LvlMinSenior = value;
+            }
         }
+        //DISPOSE
+        private bool _disposed=false;
         public void Dispose()
         {
-            elenomi.Remove(Nome);
+            Dispose(true);
+            GC.SuppressFinalize(this);
+            
         }
+        protected virtual void Dispose(bool disposing)
+        {
+            if(!_disposed)
+            {
+                
+                elenomi.Remove(Nome);
+                _disposed = true;
+            }
+            
+        }
+        ~Discipline()
+        {
+            Dispose(false);
+        }
+        //---------------------
         public override string ToString()
         {
 

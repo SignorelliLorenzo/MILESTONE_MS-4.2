@@ -81,58 +81,59 @@ namespace MS42
         public string Nome
         {
             get { return _Nome; }
-            //set
-            //{
-            //    //if(string.IsNullOrEmpty(value))
-            //    //{
-            //    //    throw new Exception("Inserire il nome del gruppo sportivo");
-            //    //}
-            //    //if(_Nome==value)
-            //    //{
-            //    //    return;
-            //    //}
-            //    //if(listnome.Contains(value))
-            //    //{
-            //    //    throw new Exception("Gruppo sportivo Già inserito");
-            //    //}
-            //    //listnome.Remove(_Nome);
-            //    //_Nome = value;       /////// PROBLEMA MODIFICA 
-            //    //listnome.Add(_Nome);
-            //}
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("Inserire il nome del gruppo sportivo");
+                }
+                if (value != _Nome)
+                {
+                    if (listnome.Contains(value))
+                    {
+                        throw new Exception("Gruppo sportivo già inserito");
+                    }
+                    listnome.Remove(_Nome);
+                    _Nome = value;
+                    listnome.Add(_Nome);
+
+                }
+                
+            }
 
         }
         private string _Sede;
         public string Sede
         {
             get { return _Sede; }
-            //set
-            //{
-            //    if (string.IsNullOrEmpty(value))
-            //    {
-            //        throw new Exception("Inserire la sede del gruppo sportivo");
-            //    }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("Inserire la sede del gruppo sportivo");
+                }
 
-            //    _Sede = value;
-            //}
+                _Sede = value;
+            }
 
         }
         private string _Presidete;
         public string Presidete
         {
             get { return _Presidete; }
-            //set
-            //{
-            //    if (string.IsNullOrEmpty(value))
-            //    {
-            //        throw new Exception("Inserire la sede del gruppo sportivo");
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("Inserire la sede del gruppo sportivo");
 
-            //    }
-            //    if(value.Trim().Count(f=> f==' ')==0)
-            //    {
-            //        throw new Exception("Inserire sia nome che cognome");
-            //    }
-            //    _Presidete = value;
-            //}
+                }
+                if (value.Trim().Count(f => f == ' ') == 0)
+                {
+                    throw new Exception("Inserire sia nome che cognome");
+                }
+                _Presidete = value;
+            }
 
         }
         private string _Telefono;
@@ -141,20 +142,30 @@ namespace MS42
             get { return _Telefono; }
             set
             {
-                //value = value.Trim();
-                //if (string.IsNullOrEmpty(value))
-                //{
-                //    throw new Exception("Inserire la sede del gruppo sportivo");
-                //}
-                //if(value.Length>15)
-                //{
-                //    throw new Exception("Numero non valido");
-                //}
-                //if(!Int64.TryParse(value,out Int64 item))
-                //{
-                //    throw new Exception("Il Numero di telefono deve essere appunto un numero");
-                //}
-                //_Telefono = value;
+                value = value.Trim();
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("Inserire la sede del gruppo sportivo");
+                }
+                if (value.Length > 15)
+                {
+                    throw new Exception("Numero non valido");
+                }
+                if (!Int64.TryParse(value, out Int64 item))
+                {
+                    throw new Exception("Il Numero di telefono deve essere appunto un numero");
+                }
+                if (value != _Telefono)
+                {
+                    if (listcell.Contains(value))
+                    {
+                        throw new Exception("Numero di telefono già inserito");
+                    }
+                    listcell.Remove(_Telefono);
+                    listcell.Add(value);
+                    _Telefono = value;
+                }
+                
             }
 
         }
@@ -162,18 +173,28 @@ namespace MS42
         public string Email
         {
             get { return _Email; }
-            //set
-            //{
-            //    if (string.IsNullOrEmpty(value))
-            //    {
-            //        throw new Exception("Inserire la sede del gruppo sportivo");
-            //    }
-            //    if(!Regex.IsMatch(value, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
-            //    {
-            //        throw new Exception("Email non valida");
-            //    }
-            //    _Email = value;
-            //}
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("Inserire la sede del gruppo sportivo");
+                }
+                if (!Regex.IsMatch(value, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                {
+                    throw new Exception("Email non valida");
+                }
+                if (value != _Email)
+                {
+                    if (listcell.Contains(value))
+                    {
+                        throw new Exception("Email già inserita");
+                    }
+                    listcell.Remove(_Email);
+                    listcell.Add(value);
+                    _Telefono = value;
+                }
+                _Email = value;
+            }
 
         }
         public override string ToString()
@@ -224,12 +245,31 @@ namespace MS42
             listcell.Add(_Telefono);
             listnome.Add(nome);
         }
+        //DISPOSE
+        private bool _disposed = false;
         public void Dispose()
         {
-            listemail.Remove(this.Email);
-            listnome.Remove(this.Nome);
-            listcell.Remove(this.Telefono);
+            Dispose(true);
+            GC.SuppressFinalize(this);
+
         }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+
+                listemail.Remove(this.Email);
+                listnome.Remove(this.Nome);
+                listcell.Remove(this.Telefono);
+                _disposed = true;
+            }
+
+        }
+        ~Gruppo_sportivo()
+        {
+            Dispose(false);
+        }
+        //-------------
 
     }
 }

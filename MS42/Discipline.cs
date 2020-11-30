@@ -20,14 +20,19 @@ namespace MS42
             {
                 throw new Exception("Fornire un nome");
             }
-
-            if (elenomi.Contains(Nome))
+            if(_Nome!=Nome)
             {
-                throw new Exception("Disciplina già creata");
+                if (elenomi.Contains(Nome))
+                {
+                    throw new Exception("Disciplina già creata");
+                    
+                }
+                elenomi.Remove(_Nome);
+                elenomi.Add(Nome);
+                _Nome = Nome;
             }
-            elenomi.Remove(_Nome);
-            elenomi.Add(Nome);
-            _Nome = Nome;
+            
+            
             _LvlMinDilettanti = Dilettanti;
             _LvlMinJunior = Junior;
             _LvlMinSenior = Senior;

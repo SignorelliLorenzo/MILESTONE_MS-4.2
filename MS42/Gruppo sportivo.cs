@@ -12,9 +12,9 @@ namespace MS42
         private static List<string> listnome = new List<string>();
         private static List<string> listcell = new List<string>();
         private static List<string> listemail = new List<string>();
-        public void ModifyParametersForUniqueness(string Nome, string Cell, string Email)
+        public void ModifyParameters(string Nome, string Cell, string Email, string sede, string capo)
         {
-            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Cell) || string.IsNullOrEmpty(Nome))
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Cell) || string.IsNullOrEmpty(Nome) || string.IsNullOrEmpty(sede) || string.IsNullOrEmpty(capo))
             {
                 throw new Exception("Inserire la sede del gruppo sportivo");
             }
@@ -23,7 +23,10 @@ namespace MS42
                 throw new Exception("Email non valida");
             }
             Cell = Cell.Trim();
-
+            if (capo.Trim().Count(f => f == ' ') == 0)
+            {
+                throw new Exception("Inserire sia nome che cognome");
+            }
             if (Cell.Length != 10)
             {
                 throw new Exception("Numero non valido");
@@ -32,28 +35,47 @@ namespace MS42
             {
                 throw new Exception("Il Numero di telefono deve essere appunto un numero");
             }
-            if (listnome.Contains(Nome))
+            if (Nome != _Nome)
             {
-                throw new Exception("Gruppo sportivo già inserito");
+                if (listnome.Contains(Nome))
+                {
+                    throw new Exception("Gruppo sportivo già inserito");
+                }
+                
+
             }
-            if (listcell.Contains(Cell))
+
+            if(Cell!=_Telefono)
             {
-                throw new Exception("Numero di telefono già inserito");
+                if (listcell.Contains(Cell))
+                {
+                    throw new Exception("Numero di telefono già inserito");
+                }
+                
             }
-            if (listemail.Contains(Email))
+            
+            if (Email != _Email)
             {
-                throw new Exception("Email già inserito");
+                if (listemail.Contains(Email))
+                {
+                    throw new Exception("Email già inserito");
+                }
+                
+                
             }
             listnome.Remove(_Nome);
             listnome.Add(Nome);
             _Nome = Nome;
             listemail.Remove(_Email);
-            listnome.Add(Email);
+            listemail.Add(Email);
             _Email = Email;
-            listemail.Remove(_Telefono);
-            listnome.Add(Cell);
+            listcell.Remove(_Telefono);
+            listcell.Add(Cell);
             _Telefono = Cell;
-            
+            this._Sede = sede;
+            this._Presidete = capo;
+
+
         }
         private string _Nome;
         public string Nome
@@ -83,34 +105,34 @@ namespace MS42
         public string Sede
         {
             get { return _Sede; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("Inserire la sede del gruppo sportivo");
-                }
+            //set
+            //{
+            //    if (string.IsNullOrEmpty(value))
+            //    {
+            //        throw new Exception("Inserire la sede del gruppo sportivo");
+            //    }
 
-                _Sede = value;
-            }
+            //    _Sede = value;
+            //}
 
         }
         private string _Presidete;
         public string Presidete
         {
             get { return _Presidete; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("Inserire la sede del gruppo sportivo");
+            //set
+            //{
+            //    if (string.IsNullOrEmpty(value))
+            //    {
+            //        throw new Exception("Inserire la sede del gruppo sportivo");
 
-                }
-                if(value.Trim().Count(f=> f==' ')==0)
-                {
-                    throw new Exception("Inserire sia nome che cognome");
-                }
-                _Presidete = value;
-            }
+            //    }
+            //    if(value.Trim().Count(f=> f==' ')==0)
+            //    {
+            //        throw new Exception("Inserire sia nome che cognome");
+            //    }
+            //    _Presidete = value;
+            //}
 
         }
         private string _Telefono;
@@ -196,15 +218,17 @@ namespace MS42
             _Email = email;
             
             
-            this.Sede = sede;
-            this.Presidete = capo;
+            this._Sede = sede;
+            this._Presidete = capo;
             listemail.Add(_Email);
             listcell.Add(_Telefono);
             listnome.Add(nome);
         }
         public void Dispose()
         {
+            listemail.Remove(this.Email);
             listnome.Remove(this.Nome);
+            listcell.Remove(this.Telefono);
         }
 
     }

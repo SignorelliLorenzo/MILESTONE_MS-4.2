@@ -96,7 +96,7 @@
             this.email = new System.Windows.Forms.TextBox();
             this.nominativo = new System.Windows.Forms.TextBox();
             this.Sede = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.eliminagruppo = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.insgruppo = new System.Windows.Forms.Button();
             this.RSGr = new System.Windows.Forms.TextBox();
@@ -801,7 +801,7 @@
             this.groupBox4.Controls.Add(this.email);
             this.groupBox4.Controls.Add(this.nominativo);
             this.groupBox4.Controls.Add(this.Sede);
-            this.groupBox4.Controls.Add(this.button8);
+            this.groupBox4.Controls.Add(this.eliminagruppo);
             this.groupBox4.Controls.Add(this.button9);
             this.groupBox4.Controls.Add(this.insgruppo);
             this.groupBox4.Controls.Add(this.RSGr);
@@ -875,16 +875,17 @@
             this.Sede.Size = new System.Drawing.Size(327, 20);
             this.Sede.TabIndex = 42;
             // 
-            // button8
+            // eliminagruppo
             // 
-            this.button8.Enabled = false;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(692, 237);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(327, 23);
-            this.button8.TabIndex = 41;
-            this.button8.Text = "ELIMINA";
-            this.button8.UseVisualStyleBackColor = true;
+            this.eliminagruppo.Enabled = false;
+            this.eliminagruppo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eliminagruppo.Location = new System.Drawing.Point(692, 237);
+            this.eliminagruppo.Name = "eliminagruppo";
+            this.eliminagruppo.Size = new System.Drawing.Size(327, 23);
+            this.eliminagruppo.TabIndex = 41;
+            this.eliminagruppo.Text = "ELIMINA";
+            this.eliminagruppo.UseVisualStyleBackColor = true;
+            this.eliminagruppo.Click += new System.EventHandler(this.eliminabtn_Click);
             // 
             // button9
             // 
@@ -988,6 +989,7 @@
             this.eliminadis.TabIndex = 21;
             this.eliminadis.Text = "ELIMINA";
             this.eliminadis.UseVisualStyleBackColor = true;
+            this.eliminadis.Click += new System.EventHandler(this.eliminadis_Click);
             // 
             // modis
             // 
@@ -1013,7 +1015,6 @@
             this.GridDisciplina.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridDisciplina.Size = new System.Drawing.Size(545, 241);
             this.GridDisciplina.TabIndex = 0;
-            this.GridDisciplina.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridDisciplina_CellContentClick);
             this.GridDisciplina.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridDisciplina_RowHeaderMouseClick);
             // 
             // nomedis
@@ -1215,7 +1216,7 @@
         private System.Windows.Forms.Button BTNINSERISCI;
         private System.Windows.Forms.Button eliminadis;
         private System.Windows.Forms.Button modis;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button eliminagruppo;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TextBox nominativo;
         private System.Windows.Forms.TextBox Sede;

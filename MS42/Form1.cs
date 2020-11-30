@@ -104,15 +104,8 @@ namespace MS42
             int k = Certificati.IndexOf(Certificati.Where(s => s.Idcertificato == modid.Text).FirstOrDefault());
             try
             {
-                
-                Certificati[k].Medico = modmedico.Text;
-                Certificati[k].Emissione = modemissione.Value;
-                Certificati[k].Nome = modnome.Text;
-                Certificati[k].Cognome = modcognome.Text;
-                Certificati[k].Nascita = modnascita.Value;
-                Certificati[k].Residenza = modres.Text;
-                Certificati[k].Gruppo_sportivo = modgruppo.SelectedItem as Gruppo_sportivo;
-                Certificati[k].CambiaDisciplina(moddisciplina.SelectedItem as Discipline, (int)modlvl.Value, modagonismo.SelectedItem.ToString());
+                Certificati[k].ModifyParameters(modmedico.Text, modnome.Text, modcognome.Text, modnascita.Value, modres.Text, modgruppo.SelectedItem as Gruppo_sportivo, moddisciplina.SelectedItem as Discipline, modagonismo.SelectedItem.ToString(),(int)modlvl.Value,modemissione.Value );
+             
                 refresh();
                 MessageBox.Show("MODIFICA ESEGUITA CON SUCCESSO");
             }
@@ -121,6 +114,7 @@ namespace MS42
                 if (ex.Source != "MS42")
                 {
                     MessageBox.Show("ERRORE GENERICO RICONTROLLARE I DATI!");
+                    return;
                 }
                 MessageBox.Show(ex.Message);
             }
@@ -159,6 +153,7 @@ namespace MS42
                 if (ex.Source != "MS42")
                 {
                     MessageBox.Show("ERRORE GENERICO RICONTROLLARE I DATI!");
+                    return;
                 }
                 MessageBox.Show(ex.Message);
             }
@@ -181,6 +176,7 @@ namespace MS42
                 if (ex.Source != "MS42")
                 {
                     MessageBox.Show("ERRORE GENERICO RICONTROLLARE I DATI!");
+                    return;
                 }
                 MessageBox.Show(ex.Message);
             }
@@ -205,6 +201,7 @@ namespace MS42
                 if (ex.Source != "MS42")
                 {
                     MessageBox.Show("ERRORE GENERICO RICONTROLLARE I DATI!");
+                    return;
                 }
                 MessageBox.Show(ex.Message);
             }
@@ -220,7 +217,27 @@ namespace MS42
 
         private void modis_Click(object sender, EventArgs e)
         {
+            try
+            { 
 
+                int x = EleDiscipline.IndexOf(EleDiscipline.Where(s => s.Nome==GridDisciplina.Rows[0].Cells[0].Value.ToString()).FirstOrDefault());
+                if(x==-1)
+                {
+                    MessageBox.Show("ERRORE LA DISCIPLINA NON SEMBRA ESISTERE");
+                    return;
+
+                }
+                EleDiscipline[x].ModifyParameters(nomedis.Text, (int)mindil.Value, (int)minjun.Value, (int)minsen.Value);
+            }
+            catch(Exception ex)
+            {
+                if (ex.Source != "MS42")
+                {
+                    MessageBox.Show("ERRORE GENERICO RICONTROLLARE I DATI!");
+                    return;
+                }
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void GridGruppo_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -230,15 +247,16 @@ namespace MS42
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Certificati.RemoveAll(s => s.Idcertificato ==GridVisualizza.SelectedRows[0].Cells[0].Value.ToString());
+            int x=Certificati.RemoveAll(s => s.Idcertificato ==GridVisualizza.SelectedRows[0].Cells[0].Value.ToString());
+            if(x==0)
+            {
+                MessageBox.Show("Codice non trovato");
+                return;
+            }
+            MessageBox.Show("Certificato eliminato con successo");
         }
 
         private void maskedTextBox3_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void GridDisciplina_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -321,6 +339,77 @@ namespace MS42
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void eliminadis_Click(object sender, EventArgs e)
+        {
+            var result=MessageBox.Show("ATTENZIONE!", "Cancellando la disciplina verranno eliminati tutti i cerificati con questa disciplina si vuole continuare?", MessageBoxButtons.YesNo);
+            switch(result)
+            {
+                case DialogResult.Yes:
+                {
+
+                        var x = EleDiscipline.Where(s => s.Nome == GridDisciplina.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault();
+                        if (x == null)
+                        {
+                            MessageBox.Show("Disciplina non trovato");
+                            return;
+                        }
+                        Certificati.ForEach(item =>
+                        {
+                            if(item.Disciplina==x)
+                            {
+                                item.Dispose();
+                            }
+                        });
+                        int eliminati=Certificati.RemoveAll(s=> s.Disciplina==x);
+                        int index=EleDiscipline.IndexOf(x);
+                        EleDiscipline[index].Dispose();
+                        EleDiscipline.Remove(x);
+                        MessageBox.Show("Disciplina eliminata con successo, sono stati eliminati "+eliminati+" certificati che contenevano questa disciplina");
+                        break;
+                }
+                case DialogResult.No:
+                {
+                        return;
+                }
+            }
+           
+        }
+
+        private void eliminabtn_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("ATTENZIONE!", "Cancellando il gruppo sportivo verranno eliminati tutti i cerificati con questo guppo si vuole continuare?", MessageBoxButtons.YesNo);
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    {
+
+                        var x = Gruppi.Where(s => s.Nome == GridDisciplina.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault();
+                        if (x == null)
+                        {
+                            MessageBox.Show("Gruppo non trovato");
+                            return;
+                        }
+                        Certificati.ForEach(item =>
+                        {
+                            if (item.Gruppo_sportivo == x)
+                            {
+                                item.Dispose();
+                            }
+                        });
+                        int eliminati = Certificati.RemoveAll(s => s.Gruppo_sportivo == x);
+                        int index = Gruppi.IndexOf(x);
+                        Gruppi[index].Dispose();
+                        Gruppi.Remove(x);
+                        MessageBox.Show("Gruppo sportivo eliminata con successo, sono stati eliminati " + eliminati + " certificati che contenevano questa disciplina");
+                        break;
+                    }
+                case DialogResult.No:
+                    {
+                        return;
+                    }
+            }
         }
     }
 }

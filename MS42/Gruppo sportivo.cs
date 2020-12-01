@@ -239,8 +239,8 @@ namespace MS42
             _Email = email;
             
             
-            this._Sede = sede;
-            this._Presidete = capo;
+            this.Sede = sede;
+            this.Presidete = capo;
             listemail.Add(_Email);
             listcell.Add(_Telefono);
             listnome.Add(nome);

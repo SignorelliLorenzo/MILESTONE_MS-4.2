@@ -42,6 +42,10 @@ namespace MS42
                 {
                     throw new Exception("Data di emissione non valida");
                 }
+                if (value < this.Nascita)
+                {
+                    throw new Exception("Il certificato non può essere fatto prima della nascita dell'esaminato");
+                }
                 _Emissione = value;
             }
         }
@@ -84,6 +88,10 @@ namespace MS42
                 if (value >= DateTime.Now)
                 {
                     throw new Exception("Data di nascita non valida");
+                }
+                if (this.Emissione < value)
+                {
+                    throw new Exception("Il certificato non può essere fatto prima della nascita dell'esaminato");
                 }
                 _Nascita = value;
             }
@@ -282,10 +290,7 @@ namespace MS42
             {
                 throw new Exception("Range massimo superato");
             }
-            if (agonismo != "Dilettante" && agonismo != "Junior" && agonismo != "Senior")
-            {
-                throw new Exception("Classe non valida");
-            }
+            
             string k = agonismo;
             switch (k)
             {
@@ -318,7 +323,7 @@ namespace MS42
                     }
                 default:
                     {
-                        throw new Exception("Classe non valida");
+                        throw new Exception("Livello agonistico non valido");
                     }
 
             }
@@ -333,6 +338,10 @@ namespace MS42
             if (nascita > DateTime.Now)
             {
                 throw new Exception("Data di nascita non valida");
+            }
+            if (emissione < nascita)
+            {
+                throw new Exception("Il certificato non può essere fatto prima della nascita dell'esaminato");
             }
             _Emissione = emissione;
 
@@ -354,10 +363,7 @@ namespace MS42
             {
                 throw new Exception("Non sono accettati campi nulli");
             }
-            if (codice.Length != 16)
-            {
-                throw new Exception("Il codice deve essere lungo 16 caratteri");
-            }
+          
             if (listaid.Contains(codice))
             {
                 throw new Exception("Id già presente");
@@ -371,10 +377,7 @@ namespace MS42
             {
                 throw new Exception("Range massimo superato");
             }
-            if (agonismo != "Dilettante" && agonismo != "Junior" && agonismo != "Senior")
-            {
-                throw new Exception("Classe non valida");
-            }
+            
             string k = agonismo;
             switch (k)
             {
@@ -407,19 +410,22 @@ namespace MS42
                     }
                 default:
                     {
-                        throw new Exception("Classe non valida");
+                        throw new Exception("Livello agonistico non valido");
                     }
 
             }
+            if(emissione<nascita)
+            {
+                throw new Exception("Il certificato non può essere fatto prima della nascita dell'esaminato");
+            }
             
-            
-            this.Emissione = emissione;
-        
+            this._Emissione = emissione;
+            this._Nascita = nascita;
             this.Medico = medico;
             this.Idcertificato = codice;
             this.Nome = nome;
             this.Cognome = cognome;
-            this.Nascita = nascita;
+            
             this.Residenza = residenza;
             this.Gruppo_sportivo = Gruppo;
             this._Disciplina = disciplina;
@@ -441,7 +447,7 @@ namespace MS42
             if (!_disposed)
             {
 
-                listaid.Remove(Nome);
+                listaid.Remove(Idcertificato);
                 _disposed = true;
             }
 

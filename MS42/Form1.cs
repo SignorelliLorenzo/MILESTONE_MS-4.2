@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MS42
 {
@@ -40,28 +41,52 @@ namespace MS42
         private void Form1_Load(object sender, EventArgs e)
         {
             TAB.TabPages.Remove(tab_elementi);
-            Gruppi.Add(new Gruppo_sportivo("PaleEolice S.p.a.", "Via Romagnolo della montanara", "Albreto d'aragona" ,"1111111111","albero@gmail.com"));
-            Gruppi.Add(new Gruppo_sportivo("Robabella S.p.a.", "Via Albero della collina", "Foremia Francesco", "2222222222", "pesche@gmail.com"));
-            Gruppi.Add(new Gruppo_sportivo("Pescebello S.p.a.", "Via Persona sconosciuta", "Yiu Del mare", "3333333333", "comodino@gmail.com"));
-            GruppoSportivo.Items.AddRange(Gruppi.ToArray());
+            //Gruppi.Add(new Gruppo_sportivo("PaleEolice S.p.a.", "Via Romagnolo della montanara", "Albreto d'aragona" ,"1111111111","albero@gmail.com"));
+            //Gruppi.Add(new Gruppo_sportivo("Robabella S.p.a.", "Via Albero della collina", "Foremia Francesco", "2222222222", "pesche@gmail.com"));
+            //Gruppi.Add(new Gruppo_sportivo("Pescebello S.p.a.", "Via Persona sconosciuta", "Yiu Del mare", "3333333333", "comodino@gmail.com"));
+            //GruppoSportivo.Items.AddRange(Gruppi.ToArray());
+            //EleDiscipline.Add(new Discipline( 12, 13, 14, "Pallavolo"));
+            //EleDiscipline.Add(new Discipline(1, 13, 24, "Calcio"));
+            //EleDiscipline.Add(new Discipline(6, 76, 100, "Basket"));
+            //Certificati.Add(new Certificato("IENDHADTOAD12DIA","Rossi Mario","Alberto","Signorelli",DateTime.Parse("12/12/2003"),"Italia Roma",Gruppi[0],EleDiscipline[0],"Dilettante",12, DateTime.Parse("12/9/2020")));
+            //Certificati.Add(new Certificato("12NDHADAHDKL2DIA", "Alberto Vitaglione", "Giovanni", "Da ventura", DateTime.Parse("05/12/1999"), "Italia Milano", Gruppi[2], EleDiscipline[1], "Senior", 100, DateTime.Parse("30/9/2020")));
+            //Certificati.Add(new Certificato("12NDHADJHFJH1DIB", "Publio Virgilio", "Dante", "Alighieri", DateTime.Parse("05/07/1998"), "Italia Firenze", Gruppi[0], EleDiscipline[1], "Junior", 100, DateTime.Parse("30/9/2012")));
+            StreamReader miofile = new StreamReader("GruppiSportivi.csv");
+            while (!miofile.EndOfStream)
+            {
+                var row = miofile.ReadLine().Split(';');
+                Gruppi.Add(new Gruppo_sportivo(row[0], row[1], row[2],  row[3],row[4]));
+            }
+            miofile.Close();
+            miofile = new StreamReader("Discipline.csv");
+            while (!miofile.EndOfStream)
+            {
+                var row = miofile.ReadLine().Split(';');
+                EleDiscipline.Add(new Discipline( int.Parse(row[1]), int.Parse(row[2]),int.Parse( row[3]),row[0]));
+            }
+            miofile.Close();
+            miofile = new StreamReader("Certificati.csv");
+            while (!miofile.EndOfStream)
+            {
+                var row=miofile.ReadLine().Split(';');
+                Certificati.Add(new Certificato(row[0], row[1], row[3], row[4], DateTime.Parse(row[5]), row[6], Gruppi.Where(s=>s.Nome == row[7]).FirstOrDefault(), EleDiscipline.Where(s => s.Nome == row[8]).FirstOrDefault(), row[9], int.Parse(row[10]), DateTime.Parse(row[2])));
+            }
+            miofile.Close();
             modgruppo.Items.AddRange(Gruppi.ToArray());
             modgruppo.SelectedIndex = -1;
             Searchgruppi.Items.AddRange(Gruppi.ToArray());
             Searchgruppi.SelectedIndex = -1;
             GruppoSportivo.SelectedIndex = -1;
-            EleDiscipline.Add(new Discipline( 12, 13, 14, "Pallavolo"));
-            EleDiscipline.Add(new Discipline(1, 13, 24, "Calcio"));
-            EleDiscipline.Add(new Discipline(6, 76, 100, "Basket"));
             Disciplina.Items.AddRange(EleDiscipline.ToArray());
             moddisciplina.Items.AddRange(EleDiscipline.ToArray());
             searchsidisciplina.Items.AddRange(EleDiscipline.ToArray());
             searchsidisciplina.SelectedIndex = -1;
             Disciplina.SelectedIndex = -1;
             moddisciplina.SelectedIndex = -1;
-            Certificati.Add(new Certificato("IENDHADTOAD12DIA","Rossi Mario","Alberto","Signorelli",DateTime.Parse("12/12/2003"),"Italia Roma",Gruppi[0],EleDiscipline[0],"Dilettante",12, DateTime.Parse("12/9/2020")));
-            Certificati.Add(new Certificato("12NDHADAHDKL2DIA", "Alberto Vitaglione", "Giovanni", "Da ventura", DateTime.Parse("05/12/1999"), "Italia Milano", Gruppi[2], EleDiscipline[1], "Senior", 100, DateTime.Parse("30/9/2020")));
-            Certificati.Add(new Certificato("12NDHADJHFJH1DIB", "Publio Virgilio", "Dante", "Alighieri", DateTime.Parse("05/07/1998"), "Italia Firenze", Gruppi[0], EleDiscipline[1], "Junior", 100, DateTime.Parse("30/9/2012")));
-
+            emissione.Value = DateTime.Now;
+            NascitaAtleta.Value = DateTime.Now;
+            modemissione.Value = DateTime.Now;
+            modnascita.Value = DateTime.Now;
 
         }
 
@@ -89,13 +114,21 @@ namespace MS42
                 case 0:
                     {
                         TAB.TabPages.Remove(tab_elementi);
+                        if(backtab==2)
+                        {
+                            backtab = 0;
+                        }
                         break;
                     }
                 case 1:
                     {
-                        if (backtab != 1)
+                        if (backtab != 2)
                         {
-                            UpdateGeneralGrid();
+                            refreshgeneral();
+                        }
+                        else 
+                        {
+                            backtab = 1;
                         }
                         TAB.TabPages.Remove(tab_elementi);
                         break;
@@ -104,6 +137,7 @@ namespace MS42
                     {
                         GridDisciplina.DataSource = EleDiscipline;
                         GridGruppo.DataSource = Gruppi;
+                        backtab = 2;
                         break;
                     }
             }
@@ -157,6 +191,8 @@ namespace MS42
             {
                 Certificato bozza = new Certificato(id.Text, medico.Text, NomeAtleta.Text, CognomeAtleta.Text, NascitaAtleta.Value, ResidenzaAtleta.Text, GruppoSportivo.SelectedItem as Gruppo_sportivo, Disciplina.SelectedItem as Discipline, Agonismo.Text, (int)LVL.Value, emissione.Value);
                 Certificati.Add(bozza);
+                MessageBox.Show("CERTIFICATO INSERITO");
+                refreshins();
             }
             catch (Exception ex)
             {
@@ -248,7 +284,14 @@ namespace MS42
                     return;
 
                 }
+                var eliminato = EleDiscipline[x] ;
                 EleDiscipline[x].ModifyParameters(nomedis.Text, (int)mindil.Value, (int)minjun.Value, (int)minsen.Value);
+                moddisciplina.Items.Remove(eliminato);
+                moddisciplina.Items.Add(EleDiscipline[x]);
+                Disciplina.Items.Remove(eliminato);
+                Disciplina.Items.Add(EleDiscipline[x]);
+                searchsidisciplina.Items.Remove(eliminato);
+                searchsidisciplina.Items.Add(EleDiscipline[x]);
                 refreshdisciplina();
             }
             catch(Exception ex)
@@ -334,6 +377,7 @@ namespace MS42
             addmodgr.Enabled = false;
             modemissione.Enabled = false;
             button4.Enabled = false;
+            modemissione.Value = DateTime.Now;
             UpdateGeneralGrid();
         }
         private void refreshdisciplina()
@@ -353,13 +397,28 @@ namespace MS42
             var visualizza = Gruppi.OrderBy(s => s.Nome);
             GridGruppo.DataSource = visualizza.ToList();
             eliminagruppo.Enabled = false;
-            modgruppo.Enabled = false;
+            btnmodgruppo.Enabled = false;
             RSGr.Clear();
             Sede.Clear();
             nominativo.Clear();
             cell.Clear();
             email.Clear();
         }
+        private void refreshins()
+        {
+            id.Clear();
+            medico.Clear();
+            emissione.Value = DateTime.Now;
+            NomeAtleta.Clear();
+            CognomeAtleta.Clear();
+            NascitaAtleta.Value = DateTime.Now;
+            ResidenzaAtleta.Clear();
+            GruppoSportivo.SelectedIndex = -1;
+            Agonismo.SelectedIndex = -1;
+            Disciplina.SelectedIndex = -1;
+            LVL.Value = 1;
+        }
+
         private void UpdateGeneralGrid()
         {
             var visualizza = Certificati;
@@ -401,7 +460,6 @@ namespace MS42
                     }
                 }).ToList();
             }
-            
             GridVisualizza.DataSource = visualizza.OrderBy(s => s.Disciplina.Nome).ToList(); 
         }
         //----------------------------------------
@@ -412,6 +470,7 @@ namespace MS42
             if(k==null)
             {
                 MessageBox.Show("Errore nel caricamento dei dati codice non trovato");
+                return;
             }
             
             modmedico.Text = k.Medico;
@@ -509,7 +568,7 @@ namespace MS42
                 case DialogResult.Yes:
                     {
 
-                        var x = Gruppi.Where(s => s.Nome == GridDisciplina.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault();
+                        var x = Gruppi.Where(s => s.Nome == GridGruppo.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault();
                         if (x == null)
                         {
                             MessageBox.Show("Gruppo non trovato");
@@ -529,6 +588,7 @@ namespace MS42
                         Gruppi[index].Dispose();
                         Gruppi.Remove(x);
                         MessageBox.Show("Gruppo sportivo eliminata con successo, sono stati eliminati " + eliminati + " certificati che contenevano questa disciplina");
+                        refreshgruppo();
                         break;
                     }
                 case DialogResult.No:
@@ -543,15 +603,22 @@ namespace MS42
             try
             {
 
-                int x = Gruppi.IndexOf(Gruppi.Where(s => s.Nome == GridDisciplina.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault());
+                int x = Gruppi.IndexOf(Gruppi.Where(s => s.Nome == GridGruppo.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault());
                 if (x == -1)
                 {
                     MessageBox.Show("ERRORE IL GRUPPO NON SEMBRA ESISTERE");
                     return;
 
                 }
+                var eliminato = Gruppi[x];
                 Gruppi[x].ModifyParameters(RSGr.Text,cell.Text.Replace(" ",""),email.Text,Sede.Text,nominativo.Text);
-                refreshdisciplina();
+                modgruppo.Items.Remove(eliminato);
+                modgruppo.Items.Add(EleDiscipline[x]);
+                GruppoSportivo.Items.Remove(eliminato);
+                GruppoSportivo.Items.Add(EleDiscipline[x]);
+                Searchgruppi.Items.Remove(eliminato);
+                Searchgruppi.Items.Add(EleDiscipline[x]);
+                refreshgruppo();
             }
             catch (Exception ex)
             {
@@ -594,6 +661,35 @@ namespace MS42
         private void Migliore_CheckedChanged(object sender, EventArgs e)
         {
             refreshgeneral();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string Path = "Certificati.csv";
+            StreamWriter miofile = new StreamWriter(Path);
+            string row = default;
+            foreach (var item in Certificati)
+            {
+                row = item.Idcertificato + ";" + item.Medico + ";" + item.Emissione.ToString() + ";" + item.Nome + ";" + item.Cognome + ";" + item.Nascita.ToString() + ";" + item.Residenza + ";" + item.Gruppo_sportivo.ToString() + ";" + item.Disciplina.ToString() + ";" + item.Livello_Agonistico + ";" + item.Idoneità.ToString();
+                miofile.WriteLine(row);
+            }
+            miofile.Close();
+            Path = "Discipline.csv";
+            miofile =new StreamWriter(Path);
+            foreach (var item in EleDiscipline)
+            {
+                row = item.Nome + ";" + item.LvlMinDilettanti.ToString() + ";" + item.LvlMinJunior.ToString() + ";" + item.LvlMinSenior.ToString();
+                miofile.WriteLine(row);
+            }
+            miofile.Close();
+            Path = "GruppiSportivi.csv";
+            miofile = new StreamWriter(Path);
+            foreach (var item in Gruppi)
+            {
+                row = item.Nome + ";" + item.Sede.ToString() + ";" + item.Presidete.ToString() + ";" + item.Telefono + ";" +item.Email;
+                miofile.WriteLine(row);
+            }
+            miofile.Close();
         }
     }
 }

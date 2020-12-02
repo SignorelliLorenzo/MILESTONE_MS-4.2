@@ -14,16 +14,20 @@ namespace MS42
         private static List<string> listemail = new List<string>();
         public void ModifyParameters(string Nome, string Cell, string Email, string sede, string capo)
         {
+            Cell = Cell.Trim();
+            Email = Email.Trim();
+            Nome = Nome.Trim();
+            capo = capo.Trim();
+            sede = sede.Trim();
             if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Cell) || string.IsNullOrEmpty(Nome) || string.IsNullOrEmpty(sede) || string.IsNullOrEmpty(capo))
             {
-                throw new Exception("Inserire la sede del gruppo sportivo");
+                throw new Exception("NON SONO ACCETTATI CAMPI NULLI");
             }
             if (!Regex.IsMatch(Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
             {
                 throw new Exception("Email non valida");
             }
-            Cell = Cell.Trim();
-            if (capo.Trim().Count(f => f == ' ') == 0)
+            if (capo.Count(f => f == ' ') == 0)
             {
                 throw new Exception("Inserire sia nome che cognome");
             }
@@ -83,6 +87,7 @@ namespace MS42
             get { return _Nome; }
             set
             {
+                value=value.Trim();
                 if (string.IsNullOrEmpty(value))
                 {
                     throw new Exception("Inserire il nome del gruppo sportivo");
@@ -123,12 +128,13 @@ namespace MS42
             get { return _Presidete; }
             set
             {
+                value = value.Trim();
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new Exception("Inserire la sede del gruppo sportivo");
+                    throw new Exception("Inserire il nominativo");
 
                 }
-                if (value.Trim().Count(f => f == ' ') == 0)
+                if (value.Count(f => f == ' ') == 0)
                 {
                     throw new Exception("Inserire sia nome che cognome");
                 }
@@ -175,6 +181,7 @@ namespace MS42
             get { return _Email; }
             set
             {
+                value = value.Trim();
                 if (string.IsNullOrEmpty(value))
                 {
                     throw new Exception("Inserire la sede del gruppo sportivo");
@@ -203,9 +210,15 @@ namespace MS42
         }
         public Gruppo_sportivo (string nome, string sede,string capo, string cell, string email)
         {
+
+            cell = cell.Trim();
+            email = email.Trim();
+            nome = nome.Trim();
+            capo = capo.Trim();
+            sede = sede.Trim();
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(cell) || string.IsNullOrEmpty(nome))
             {
-                throw new Exception("Inserire la sede del gruppo sportivo");
+                throw new Exception("NON SONO ACCETTATI CAMPI NULLI");
             }
             if (!Regex.IsMatch(email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
             {

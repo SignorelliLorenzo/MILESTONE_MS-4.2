@@ -25,7 +25,7 @@ namespace MS42
                 {
                     throw new Exception("Inserire sia nome che cognome");
                 }
-                _Medico = value;
+                _Medico = value.Trim();
             }
         }
         private DateTime _Emissione;
@@ -38,11 +38,11 @@ namespace MS42
                 {
                     throw new Exception("Non sono accettati campi nulli");
                 }
-                if (value > DateTime.Now)
+                if (value.Date > DateTime.Now.Date)
                 {
                     throw new Exception("Data di emissione non valida");
                 }
-                if (value < this.Nascita)
+                if (value.Date < this.Nascita.Date)
                 {
                     throw new Exception("Il certificato non può essere fatto prima della nascita dell'esaminato");
                 }
@@ -85,11 +85,11 @@ namespace MS42
                 {
                     throw new Exception("Non sono accettati campi nulli");
                 }
-                if (value >= DateTime.Now)
+                if (value.Date >= DateTime.Now.Date)
                 {
                     throw new Exception("Data di nascita non valida");
                 }
-                if (this.Emissione < value)
+                if (this.Emissione.Date < value.Date)
                 {
                     throw new Exception("Il certificato non può essere fatto prima della nascita dell'esaminato");
                 }
@@ -274,7 +274,12 @@ namespace MS42
 
         public void ModifyParameters( string medico, string nome, string cognome, DateTime nascita, string residenza, Gruppo_sportivo Gruppo, Discipline disciplina, string agonismo, int lvl, DateTime emissione = default)
         {
-
+            
+            medico = medico.Trim();
+            nome = nome.Trim();
+            cognome = cognome.Trim();
+            residenza = residenza.Trim();
+            agonismo = agonismo.Trim();
 
             if ( string.IsNullOrEmpty(agonismo) || disciplina == null || string.IsNullOrEmpty(medico) || string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(cognome) || nascita == null || string.IsNullOrEmpty(residenza) || Gruppo == null )
             {
@@ -316,7 +321,7 @@ namespace MS42
                     {
                         if (lvl < disciplina.LvlMinSenior)
                         {
-                            throw new Exception("Non sono accettati campi Senior");
+                            throw new Exception("Livello non sufficente per Senior");
                         }
                         break;
 
@@ -331,11 +336,11 @@ namespace MS42
             {
                 throw new Exception("Inserire sia nome che cognome");
             }
-            if (emissione >= DateTime.Now)
+            if (emissione.Date > DateTime.Now.Date)
             {
                 throw new Exception("Data di emissione non valida");
             }
-            if (nascita > DateTime.Now)
+            if (nascita.Date >= DateTime.Now.Date)
             {
                 throw new Exception("Data di nascita non valida");
             }
@@ -343,13 +348,13 @@ namespace MS42
             {
                 throw new Exception("Il certificato non può essere fatto prima della nascita dell'esaminato");
             }
-            _Emissione = emissione;
+            this._Emissione = emissione;
 
-            _Medico = medico;
+            this._Medico = medico;
 
             this._Nome = nome;
             this._Cognome = cognome;
-            this._Nascita = nascita;
+            this._Nascita = nascita.Date;
             this._Residenza = residenza;
             this._Gruppo_sportivo = Gruppo;
             this._Disciplina = disciplina;
@@ -359,6 +364,12 @@ namespace MS42
 
         public Certificato(string codice, string medico, string nome, string cognome, DateTime nascita, string residenza, Gruppo_sportivo Gruppo, Discipline disciplina, string agonismo, int lvl, DateTime emissione = default)
         {
+            codice = codice.Trim();
+            medico = medico.Trim();
+            nome = nome.Trim();
+            cognome = cognome.Trim();
+            residenza = residenza.Trim();
+            agonismo = agonismo.Trim();
             if (string.IsNullOrEmpty(codice) || string.IsNullOrEmpty(agonismo) || disciplina == null )
             {
                 throw new Exception("Non sono accettati campi nulli");
@@ -414,13 +425,20 @@ namespace MS42
                     }
 
             }
-            if(emissione<nascita)
+            if(emissione.Date<nascita.Date)
             {
                 throw new Exception("Il certificato non può essere fatto prima della nascita dell'esaminato");
             }
-            
+            if (emissione.Date > DateTime.Now.Date)
+            {
+                throw new Exception("Data di emissione non valida");
+            }
+            if (nascita.Date >= DateTime.Now.Date)
+            {
+                throw new Exception("Data di nascita non valida");
+            }
             this._Emissione = emissione;
-            this._Nascita = nascita;
+            this._Nascita = nascita.Date;
             this.Medico = medico;
             this.Idcertificato = codice;
             this.Nome = nome;

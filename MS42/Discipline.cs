@@ -16,10 +16,12 @@ namespace MS42
             {
                 throw new Exception("Fornire intervalli validi");
             }
+            Nome = Nome.Trim();
             if (string.IsNullOrEmpty(Nome))
             {
                 throw new Exception("Fornire un nome");
             }
+           
             if(_Nome!=Nome)
             {
                 if (elenomi.Contains(Nome))
@@ -43,6 +45,7 @@ namespace MS42
 
             set
             {
+                value = value.Trim();
                 if (string.IsNullOrEmpty(Nome))
                 {
                     throw new Exception("Fornire un nome");
@@ -142,7 +145,8 @@ namespace MS42
         }
         public Discipline(int dilettanti, int junior, int senior, string nome)
         {
-            if(!(dilettanti<junior && junior<senior) || (dilettanti < 0 || senior > 100) )
+            nome = nome.Trim();
+            if (!(dilettanti<junior && junior<senior) || (dilettanti < 0 || senior > 100) )
             {
                 throw new Exception("Fornire intervalli validi");
             }

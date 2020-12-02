@@ -1064,6 +1064,7 @@
             this.groupBox3.TabIndex = 32;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DISCIPLINA";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // eliminadis
             // 

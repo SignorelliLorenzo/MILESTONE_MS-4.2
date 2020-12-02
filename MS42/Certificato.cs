@@ -17,6 +17,7 @@ namespace MS42
             get { return _Medico; }
             set
             {
+                value = value.Trim();
                 if (String.IsNullOrEmpty(value))
                 {
                     throw new Exception("Non sono accettati campi nulli");
@@ -25,7 +26,7 @@ namespace MS42
                 {
                     throw new Exception("Inserire sia nome che cognome");
                 }
-                _Medico = value.Trim();
+                _Medico = value;
             }
         }
         private DateTime _Emissione;
@@ -55,6 +56,7 @@ namespace MS42
             get { return _Nome; }
             set
             {
+                value = value.Trim();
                 if (String.IsNullOrEmpty(value))
                 {
                     throw new Exception("Non sono accettati campi nulli");
@@ -68,6 +70,7 @@ namespace MS42
             get { return _Cognome; }
             set
             {
+                value = value.Trim();
                 if (String.IsNullOrEmpty(value))
                 {
                     throw new Exception("Non sono accettati campi nulli");
@@ -102,6 +105,7 @@ namespace MS42
             get { return _Residenza; }
             set
             {
+                value = value.Trim();
                 if (String.IsNullOrEmpty(value))
                 {
                     throw new Exception("Non sono accettati campi nulli");
@@ -179,7 +183,8 @@ namespace MS42
             get { return _Livello_Agonistico; }
             set
             {
-                if(string.IsNullOrEmpty(value))
+                value = value.Trim();
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new Exception("Non sono accettati campi nulli");
                 }
